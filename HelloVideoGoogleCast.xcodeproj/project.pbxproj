@@ -419,7 +419,6 @@
 					"$(inherited)",
 					.,
 					..,
-					"/Users/javaclimber/Documents/chromecast/google-cast-ios-demo-google-code/Google_Cast_iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
@@ -439,7 +438,6 @@
 					"$(inherited)",
 					.,
 					..,
-					"/Users/javaclimber/Documents/chromecast/google-cast-ios-demo-google-code/Google_Cast_iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
