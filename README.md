@@ -9,7 +9,7 @@ This Hello Video demo application shows how an iOS sender application can cast a
 * Get a Chromecast device and get it set up for development: https://developers.google.com/cast/docs/developers#Get_started
 * Register an application on the Developers Console [http://cast.google.com/publish](http://cast.google.com/publish "Google Cast Developer Console"). The easisest would be to use the Styled Media Receiver option there. You will get an App ID when you finsih registering your application.
 * Setup the project dependencies in xCode
-* In ChromecastDeviceController.m, replace @"[YOUR\_APP\_ID_HERE]" with your app identifier from the Google Cast Developer Console. When you are done, it will look something like: 
+* In ChromecastDeviceController.m, replace @"YOUR\_APP\_ID\_HERE" with your app identifier from the Google Cast Developer Console. When you are done, it will look something like: 
   * static NSString *const kReceiverAppID = @"1234ABCD";
 
 ## Documentation
