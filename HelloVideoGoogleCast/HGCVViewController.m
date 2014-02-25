@@ -14,7 +14,8 @@
 
 #import "HGCVViewController.h"
 
-static NSString *const kReceiverAppID = @"YOUR_APP_ID_HERE";
+
+static NSString * kReceiverAppID;
 
 @interface HGCVViewController () {
 
@@ -36,6 +37,9 @@ static NSString *const kReceiverAppID = @"YOUR_APP_ID_HERE";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+    //You can add your own app id here that you get by registering with the Google Cast SDK Developer Console https://cast.google.com/publish
+    kReceiverAppID=kGCKMediaDefaultReceiverApplicationID;
 
   //Create chromecast button
   _btnImage = [UIImage imageNamed:@"icon-cast-identified.png"];
