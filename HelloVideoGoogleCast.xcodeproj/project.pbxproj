@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC0776401890823E00577499 /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC07763F1890823E00577499 /* GoogleCast.framework */; };
 		CC34F3D41885E326007E3FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D31885E326007E3FFC /* Foundation.framework */; };
 		CC34F3D61885E326007E3FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D51885E326007E3FFC /* CoreGraphics.framework */; };
 		CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
@@ -27,6 +26,9 @@
 		CC34F4101885E4B8007E3FFC /* icon-cast-connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40C1885E4B8007E3FFC /* icon-cast-connected@2x.png */; };
 		CC34F4111885E4B8007E3FFC /* icon-cast-identified.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40D1885E4B8007E3FFC /* icon-cast-identified.png */; };
 		CC34F4121885E4B8007E3FFC /* icon-cast-identified@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40E1885E4B8007E3FFC /* icon-cast-identified@2x.png */; };
+		CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
+		CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
+		CCE5BD5419709A3400016BAB /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5319709A3400016BAB /* GoogleCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,9 @@
 		CC34F40D1885E4B8007E3FFC /* icon-cast-identified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-identified.png"; sourceTree = "<group>"; };
 		CC34F40E1885E4B8007E3FFC /* icon-cast-identified@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-identified@2x.png"; sourceTree = "<group>"; };
 		CC34F416188611E9007E3FFC /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = "../../../../Downloads/GoogleCastFramework-2.0-Release/GoogleCast.framework"; sourceTree = "<group>"; };
+		CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
+		CCE5BD5119709A1700016BAB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		CCE5BD5319709A3400016BAB /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC0776401890823E00577499 /* GoogleCast.framework in Frameworks */,
+				CCE5BD5419709A3400016BAB /* GoogleCast.framework in Frameworks */,
+				CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */,
+				CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */,
 				CC34F3D61885E326007E3FFC /* CoreGraphics.framework in Frameworks */,
 				CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */,
 				CC34F3D41885E326007E3FFC /* Foundation.framework in Frameworks */,
@@ -115,6 +122,9 @@
 		CC34F3D21885E326007E3FFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCE5BD5319709A3400016BAB /* GoogleCast.framework */,
+				CCE5BD5119709A1700016BAB /* CoreText.framework */,
+				CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */,
 				CC07763F1890823E00577499 /* GoogleCast.framework */,
 				CC34F416188611E9007E3FFC /* GoogleCast.framework */,
 				CC34F3D31885E326007E3FFC /* Foundation.framework */,
@@ -419,6 +429,7 @@
 					"$(inherited)",
 					.,
 					..,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
@@ -438,6 +449,7 @@
 					"$(inherited)",
 					.,
 					..,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
