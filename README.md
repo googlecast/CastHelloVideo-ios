@@ -3,7 +3,7 @@
 This Hello Video demo application shows how an iOS sender application can cast a Video.  For simplicity this app is not fully compliant with the UX Checklist. 
 
 ## Dependencies
-* iOS Sender API library : can be downloaded here at: [https://developers.google.com/cast/docs/downloads/](https://developers.google.com/cast/docs/downloads/ "iOS Sender API library")
+* iOS Sender API library : can be downloaded here at: [https://developers.google.com/cast/docs/developers#ios](https://developers.google.com/cast/docs/developers#ios "iOS Sender API library")
 
 ## Setup Instructions
 * Get a Chromecast device and get it set up for development: https://developers.google.com/cast/docs/developers#Get_started
