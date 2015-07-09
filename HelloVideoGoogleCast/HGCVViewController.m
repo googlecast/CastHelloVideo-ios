@@ -56,8 +56,11 @@ static NSString * kReceiverAppID;
   self.navigationItem.rightBarButtonItem =
       [[UIBarButtonItem alloc] initWithCustomView:_chromecastButton];
 
+  //Establish filter criteria
+  GCKFilterCriteria *filterCriteria = [GCKFilterCriteria criteriaForAvailableApplicationWithID:kReceiverAppID];
+  
   //Initialize device scanner
-  self.deviceScanner = [[GCKDeviceScanner alloc] init];
+  self.deviceScanner = [[GCKDeviceScanner alloc] initWithFilterCriteria:filterCriteria];
 
   [self.deviceScanner addListener:self];
   [self.deviceScanner startScan];
@@ -122,7 +125,7 @@ static NSString * kReceiverAppID;
 }
 
 - (BOOL)isConnected {
-  return self.deviceManager.isConnected;
+  return self.deviceManager.connectionState == GCKConnectionStateConnected;
 }
 
 - (void)connectToDevice {
@@ -153,7 +156,7 @@ static NSString * kReceiverAppID;
     [_chromecastButton setImage:_btnImage forState:UIControlStateNormal];
     _chromecastButton.hidden = NO;
 
-    if (self.deviceManager && self.deviceManager.isConnected) {
+    if (self.deviceManager && self.isConnected) {
       //Show cast button in enabled state
       [_chromecastButton setTintColor:[UIColor blueColor]];
     } else {
@@ -170,7 +173,7 @@ static NSString * kReceiverAppID;
   NSLog(@"Cast Video");
 
   //Show alert if not connected
-  if (!self.deviceManager || !self.deviceManager.isConnected) {
+  if (!self.deviceManager || !self.isConnected) {
     UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Connected", nil)
                                    message:NSLocalizedString(@"Please connect to Cast device", nil)
