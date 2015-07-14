@@ -24,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="N6q-Pg-O1t">
             <objects>
-                <viewController id="his-NW-nJg" customClass="HGCVViewController" sceneMemberID="viewController">
+                <viewController id="his-NW-nJg" customClass="HGCViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4yx-FT-Nyp"/>
                         <viewControllerLayoutGuide type="bottom" id="FJE-Hq-Um8"/>
