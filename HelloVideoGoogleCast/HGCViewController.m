@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "HGCVViewController.h"
+#import "HGCViewController.h"
 
 
 static NSString * kReceiverAppID;
 
-@interface HGCVViewController () {
+@interface HGCViewController () {
 
   UIImage *_btnImage;
   UIImage *_btnImageSelected;
@@ -33,13 +33,13 @@ static NSString * kReceiverAppID;
 
 @end
 
-@implementation HGCVViewController
+@implementation HGCViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-    
-    //You can add your own app id here that you get by registering with the Google Cast SDK Developer Console https://cast.google.com/publish
-    kReceiverAppID=kGCKMediaDefaultReceiverApplicationID;
+  //You can add your own app id here that you get by registering with the Google Cast SDK
+  //Developer Console https://cast.google.com/publish
+  kReceiverAppID=kGCKMediaDefaultReceiverApplicationID;
 
   //Create chromecast button
   _btnImage = [UIImage imageNamed:@"icon-cast-identified.png"];
@@ -56,8 +56,11 @@ static NSString * kReceiverAppID;
   self.navigationItem.rightBarButtonItem =
       [[UIBarButtonItem alloc] initWithCustomView:_chromecastButton];
 
+  //Establish filter criteria
+  GCKFilterCriteria *filterCriteria = [GCKFilterCriteria
+                                       criteriaForAvailableApplicationWithID:kReceiverAppID];
   //Initialize device scanner
-  self.deviceScanner = [[GCKDeviceScanner alloc] init];
+  self.deviceScanner = [[GCKDeviceScanner alloc] initWithFilterCriteria:filterCriteria];
 
   [self.deviceScanner addListener:self];
   [self.deviceScanner startScan];
@@ -114,13 +117,13 @@ static NSString * kReceiverAppID;
 
 - (void)updateStatsFromDevice {
 
-  if (self.mediaControlChannel && self.isConnected) {
+  if (self.mediaControlChannel && self.isDeviceConnected) {
     _mediaInformation = self.mediaControlChannel.mediaStatus.mediaInformation;
   }
 }
 
-- (BOOL)isConnected {
-  return self.deviceManager.isConnected;
+- (BOOL)isDeviceConnected {
+  return self.deviceManager.applicationConnectionState == GCKConnectionStateConnected;
 }
 
 - (void)connectToDevice {
@@ -151,7 +154,7 @@ static NSString * kReceiverAppID;
     [_chromecastButton setImage:_btnImage forState:UIControlStateNormal];
     _chromecastButton.hidden = NO;
 
-    if (self.deviceManager && self.deviceManager.isConnected) {
+    if (self.deviceManager && self.isDeviceConnected) {
       //Show cast button in enabled state
       [_chromecastButton setTintColor:[UIColor blueColor]];
     } else {
@@ -168,7 +171,7 @@ static NSString * kReceiverAppID;
   NSLog(@"Cast Video");
 
   //Show alert if not connected
-  if (!self.deviceManager || !self.deviceManager.isConnected) {
+  if (!self.deviceManager || !self.isDeviceConnected) {
     UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Connected", nil)
                                    message:NSLocalizedString(@"Please connect to Cast device", nil)

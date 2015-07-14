@@ -15,7 +15,7 @@
 #import <UIKit/UIKit.h>
 #import <GoogleCast/GoogleCast.h>
 
-@interface HGCVViewController : UIViewController<GCKDeviceScannerListener,
+@interface HGCViewController : UIViewController<GCKDeviceScannerListener,
                                                  GCKDeviceManagerDelegate,
                                                  GCKMediaControlChannelDelegate,
                                                  UIActionSheetDelegate>
