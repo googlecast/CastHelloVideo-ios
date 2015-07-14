@@ -29,6 +29,8 @@
 		CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
 		CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
 		CCE5BD5419709A3400016BAB /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5319709A3400016BAB /* GoogleCast.framework */; };
+		EA021AE11B555A6F009FC66F /* icon-cast-connected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA021ADF1B555A6F009FC66F /* icon-cast-connected@3x.png */; };
+		EA021AE21B555A6F009FC66F /* icon-cast-identified@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA021AE01B555A6F009FC66F /* icon-cast-identified@3x.png */; };
 		EF87401919CCA53700B7FBA3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
 		CCE5BD5119709A1700016BAB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		CCE5BD5319709A3400016BAB /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
+		EA021ADF1B555A6F009FC66F /* icon-cast-connected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-connected@3x.png"; sourceTree = "<group>"; };
+		EA021AE01B555A6F009FC66F /* icon-cast-identified@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-identified@3x.png"; sourceTree = "<group>"; };
 		EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -157,6 +161,8 @@
 		CC34F3DA1885E326007E3FFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EA021ADF1B555A6F009FC66F /* icon-cast-connected@3x.png */,
+				EA021AE01B555A6F009FC66F /* icon-cast-identified@3x.png */,
 				CC34F40B1885E4B8007E3FFC /* icon-cast-connected.png */,
 				CC34F40C1885E4B8007E3FFC /* icon-cast-connected@2x.png */,
 				CC34F40D1885E4B8007E3FFC /* icon-cast-identified.png */,
@@ -268,7 +274,9 @@
 				CC34F4101885E4B8007E3FFC /* icon-cast-connected@2x.png in Resources */,
 				CC34F40F1885E4B8007E3FFC /* icon-cast-connected.png in Resources */,
 				CC34F4121885E4B8007E3FFC /* icon-cast-identified@2x.png in Resources */,
+				EA021AE21B555A6F009FC66F /* icon-cast-identified@3x.png in Resources */,
 				CC34F3EA1885E326007E3FFC /* Main_iPad.storyboard in Resources */,
+				EA021AE11B555A6F009FC66F /* icon-cast-connected@3x.png in Resources */,
 				CC34F3EF1885E326007E3FFC /* Images.xcassets in Resources */,
 				CC34F3E71885E326007E3FFC /* Main_iPhone.storyboard in Resources */,
 				CC34F3DE1885E326007E3FFC /* InfoPlist.strings in Resources */,
