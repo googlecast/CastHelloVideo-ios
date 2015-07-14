@@ -3,13 +3,23 @@
 This Hello Video demo application shows how an iOS sender application can cast a Video.  For simplicity this app is not fully compliant with the UX Checklist. 
 
 ## Dependencies
-* iOS Sender API library : can be downloaded here at: [https://developers.google.com/cast/docs/developers#ios](https://developers.google.com/cast/docs/developers#ios "iOS Sender API library")
+* CocoaPods - dependencies are managed via CocoaPods. See http://guides.cocoapods.org/using/getting-started.html for setup instructions.
+* Alternatively, you may download the iOS Sender API library directly at: [https://developers.google.com/cast/docs/developers#ios](https://developers.google.com/cast/docs/developers#ios "iOS Sender API library")
 
-## Setup Instructions
+## Setup Instructions (With CocoaPods)
+* Get a Chromecast device and get it set up for development: https://developers.google.com/cast/docs/developers#Get_started
+* Register an application on the Developers Console [http://cast.google.com/publish](http://cast.google.com/publish "Google Cast Developer Console"). The easiest would be to use the Styled Media Receiver option there. You will get an App ID when you finish registering your application.
+* Run `pod install` in the CastHelloVideo-ios directory
+* Open the .xcworkspace file rather the the xcproject to ensure you have the pod dependencies.
+* In HGCViewController.m, replace @"YOUR\_APP\_ID\_HERE" with your app identifier from the Google Cast Developer Console. When you are done, it will look something like: 
+  * static NSString *const kReceiverAppID = @"1234ABCD";
+
+## Setup Instructions (Without CocoaPods)
 * Get a Chromecast device and get it set up for development: https://developers.google.com/cast/docs/developers#Get_started
 * Register an application on the Developers Console [http://cast.google.com/publish](http://cast.google.com/publish "Google Cast Developer Console"). The easiest would be to use the Styled Media Receiver option there. You will get an App ID when you finish registering your application.
 * Setup the project dependencies in xCode
-* In HGCVViewController.m, replace @"YOUR\_APP\_ID\_HERE" with your app identifier from the Google Cast Developer Console. When you are done, it will look something like: 
+* Under "Build Settings", add "-ObjC" to "Other Linker Flags"
+* In HGCViewController.m, replace @"YOUR\_APP\_ID\_HERE" with your app identifier from the Google Cast Developer Console. When you are done, it will look something like: 
   * static NSString *const kReceiverAppID = @"1234ABCD";
 
 ## Documentation
