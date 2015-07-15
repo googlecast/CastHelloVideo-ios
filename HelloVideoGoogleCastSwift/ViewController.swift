@@ -23,8 +23,8 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
   var selectedDevice: GCKDevice?
   var deviceManager: GCKDeviceManager?
   var mediaInformation: GCKMediaInformation?
-  var mediaControlChannel: GCKMediaControlChannel
-  var chromecastButton : UIButton
+  var mediaControlChannel: GCKMediaControlChannel?
+  var googleCastButton : UIButton
   var deviceScanner: GCKDeviceScanner
   var btnImage : UIImage
   var btnImageSelected : UIImage
@@ -39,10 +39,9 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     let filterCriteria = GCKFilterCriteria(forAvailableApplicationWithID:
         kGCKMediaDefaultReceiverApplicationID)
     deviceScanner = GCKDeviceScanner(filterCriteria:filterCriteria);
-    mediaControlChannel = GCKMediaControlChannel()
     btnImage = UIImage(named: "icon-cast-identified.png")!
     btnImageSelected = UIImage(named:"icon-cast-connected.png")!
-    chromecastButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    googleCastButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
     super.init(coder: aDecoder)
   }
 
@@ -50,12 +49,12 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     super.viewDidLoad()
 
     // Do any additional setup after loading the view, typically from a nib.
-    chromecastButton.addTarget(self, action: "chooseDevice:", forControlEvents: .TouchUpInside)
-    chromecastButton.frame = CGRectMake(0, 0, btnImage.size.width, btnImage.size.height)
-    chromecastButton.setImage(nil, forState:UIControlState.Normal)
-    chromecastButton.hidden = true
+    googleCastButton.addTarget(self, action: "chooseDevice:", forControlEvents: .TouchUpInside)
+    googleCastButton.frame = CGRectMake(0, 0, btnImage.size.width, btnImage.size.height)
+    googleCastButton.setImage(nil, forState:UIControlState.Normal)
+    googleCastButton.hidden = true
 
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: chromecastButton)
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: googleCastButton)
 
     // Initialize device scanner
     deviceScanner.addListener(self)
@@ -64,7 +63,6 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
 
   func chooseDevice(sender:AnyObject) {
     if (selectedDevice == nil) {
-      // [START showing-devices]
       var sheet : UIActionSheet = UIActionSheet(title: "Connect to Device",
         delegate: self,
         cancelButtonTitle: nil,
@@ -74,19 +72,18 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
         sheet.addButtonWithTitle(device.friendlyName)
       }
 
-      // [START_EXCLUDE silent]
       // Add the cancel button at the end so that indexes of the titles map to the array index.
       sheet.addButtonWithTitle(kCancelTitle);
       sheet.cancelButtonIndex = sheet.numberOfButtons - 1;
-      // [END_EXCLUDE]
-      
-      sheet.showInView(chromecastButton)
-      // [END showing-devices]
+      sheet.showInView(googleCastButton)
     } else {
       updateStatsFromDevice();
       let friendlyName = "Casting to \(selectedDevice!.friendlyName)";
 
-      var sheet : UIActionSheet = UIActionSheet(title: friendlyName, delegate: self, cancelButtonTitle: nil, destructiveButtonTitle: nil);
+      var sheet : UIActionSheet = UIActionSheet(title: friendlyName,
+                                             delegate: self,
+                                    cancelButtonTitle: nil,
+                               destructiveButtonTitle: nil);
       var buttonIndex = 0;
 
       if let info = mediaInformation {
@@ -100,21 +97,14 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
       sheet.destructiveButtonIndex = buttonIndex++;
       sheet.cancelButtonIndex = buttonIndex;
 
-      sheet.showInView(chromecastButton);
+      sheet.showInView(googleCastButton);
     }
   }
 
   func updateStatsFromDevice() {
-    if isConnected() && mediaControlChannel.mediaStatus != nil {
-      mediaInformation = mediaControlChannel.mediaStatus.mediaInformation
-    }
-  }
-
-  func isConnected() -> Bool {
-    if let manager = deviceManager {
-      return manager.connectionState == GCKConnectionState.Connected
-    } else {
-      return false
+    if deviceManager?.connectionState == GCKConnectionState.Connected
+      && mediaControlChannel?.mediaStatus != nil {
+      mediaInformation = mediaControlChannel?.mediaStatus.mediaInformation
     }
   }
 
@@ -122,12 +112,10 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     if (selectedDevice == nil) {
       return
     }
-    // [START device-selection]
     let identifier = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as! String
     deviceManager = GCKDeviceManager(device: selectedDevice, clientPackageName: identifier)
     deviceManager!.delegate = self
     deviceManager!.connect()
-    // [END device-selection]
   }
 
   func deviceDisconnected() {
@@ -138,18 +126,18 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
   func updateButtonStates() {
     if (deviceScanner.devices.count == 0) {
       //Hide the cast button
-      chromecastButton.hidden = true;
+      googleCastButton.hidden = true;
     } else {
       //Show cast button
-      chromecastButton.setImage(btnImage, forState: UIControlState.Normal);
-      chromecastButton.hidden = false;
+      googleCastButton.setImage(btnImage, forState: UIControlState.Normal);
+      googleCastButton.hidden = false;
 
-      if isConnected() {
+      if deviceManager?.connectionState == GCKConnectionState.Connected {
         //Show cast button in enabled state
-        chromecastButton.tintColor = UIColor.blueColor()
+        googleCastButton.tintColor = UIColor.blueColor()
       } else {
         //Show cast button in disabled state
-        chromecastButton.tintColor = UIColor.grayColor()
+        googleCastButton.tintColor = UIColor.grayColor()
       }
     }
   }
@@ -160,7 +148,7 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     println("Cast Video");
 
     // Show alert if not connected.
-    if (!isConnected()) {
+    if (deviceManager?.connectionState != GCKConnectionState.Connected) {
       let alert = UIAlertController(title: "Not Connected",
         message: "Please connect to Cast device",
         preferredStyle: UIAlertControllerStyle.Alert)
@@ -173,8 +161,8 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     // Define Media Metadata.
     let metadata = GCKMediaMetadata();
     metadata.setString("Big Buck Bunny (2008)", forKey: kGCKMetadataKeyTitle);
-    metadata.setString("Big Buck Bunny tells the story of a giant rabbit with a heart bigger than " +
-        "himself. When one sunny day three rodents rudely harass him, something " +
+    metadata.setString("Big Buck Bunny tells the story of a giant rabbit with a heart bigger " +
+        "than himself. When one sunny day three rodents rudely harass him, something " +
         "snaps... and the rabbit ain't no bunny anymore! In the typical cartoon " +
         "tradition he prepares the nasty rodents a comical revenge.",
         forKey:kGCKMetadataKeySubtitle);
@@ -187,7 +175,8 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     // [START load-media]
     // Define Media Information.
     let mediaInformation = GCKMediaInformation(
-      contentID: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      contentID:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       streamType: GCKMediaStreamType.None,
       contentType: "video/mp4",
       metadata: metadata,
@@ -198,12 +187,14 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     );
 
     // Cast the media
-    mediaControlChannel.loadMedia(mediaInformation, autoplay: true);
+    mediaControlChannel!.loadMedia(mediaInformation, autoplay: true);
     // [END load-media]
   }
 
   func showError(error: NSError) {
-    var alert = UIAlertController(title: "Error", message: error.description, preferredStyle: UIAlertControllerStyle.Alert);
+    var alert = UIAlertController(title: "Error",
+                                message: error.description,
+                         preferredStyle: UIAlertControllerStyle.Alert);
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
   }
@@ -247,8 +238,9 @@ extension ViewController {
   }
 }
 
-
+// [START media-control-channel]
 // MARK: GCKDeviceManagerDelegate
+// [START_EXCLUDE silent]
 extension ViewController {
 
   func deviceManagerDidConnect(deviceManager: GCKDeviceManager!) {
@@ -257,17 +249,19 @@ extension ViewController {
     updateButtonStates();
     deviceManager.launchApplication(kReceiverAppID);
   }
-
+  // [END_EXCLUDE]
   func deviceManager(deviceManager: GCKDeviceManager!,
     didConnectToCastApplication
     applicationMetadata: GCKApplicationMetadata!,
     sessionID: String!,
     launchedApplication: Bool) {
     println("Application has launched.");
-    mediaControlChannel.delegate = self;
+    self.mediaControlChannel = GCKMediaControlChannel()
+    mediaControlChannel!.delegate = self;
     deviceManager.addChannel(mediaControlChannel);
-    mediaControlChannel.requestStatus();
+    mediaControlChannel!.requestStatus();
   }
+  // [END media-control-channel]
 
   func deviceManager(deviceManager: GCKDeviceManager!,
     didFailToConnectToApplicationWithError error: NSError!) {

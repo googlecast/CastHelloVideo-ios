@@ -15,14 +15,19 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
 
   var window: UIWindow?
-
+  
   func application(application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    GCKLogger.sharedInstance().delegate = self
     return true
   }
+  
+  func logFromFunction(function: UnsafePointer<Int8>, message: String!) {
+    let functionName = String.fromCString(function)
+    print(functionName! + " - " + message)
+  }
 }
-
