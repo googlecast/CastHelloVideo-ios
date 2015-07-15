@@ -37,11 +37,11 @@ static NSString * kReceiverAppID;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  //You can add your own app id here that you get by registering with the Google Cast SDK
-  //Developer Console https://cast.google.com/publish
+  // You can add your own app id here that you get by registering with the Google Cast SDK
+  // Developer Console https://cast.google.com/publish
   kReceiverAppID=kGCKMediaDefaultReceiverApplicationID;
 
-  //Create chromecast button
+  // Create ChromeCast button.
   _btnImage = [UIImage imageNamed:@"icon-cast-identified.png"];
   _btnImageSelected = [UIImage imageNamed:@"icon-cast-connected.png"];
 
@@ -56,10 +56,10 @@ static NSString * kReceiverAppID;
   self.navigationItem.rightBarButtonItem =
       [[UIBarButtonItem alloc] initWithCustomView:_chromecastButton];
 
-  //Establish filter criteria
+  // Establish filter criteria.
   GCKFilterCriteria *filterCriteria = [GCKFilterCriteria
                                        criteriaForAvailableApplicationWithID:kReceiverAppID];
-  //Initialize device scanner
+  // Initialize device scanner.
   self.deviceScanner = [[GCKDeviceScanner alloc] initWithFilterCriteria:filterCriteria];
 
   [self.deviceScanner addListener:self];
@@ -73,9 +73,9 @@ static NSString * kReceiverAppID;
 }
 
 - (void)chooseDevice:(id)sender {
-  //Choose device
   if (self.selectedDevice == nil) {
-    //Choose device
+    // [START showing-devices]
+    // Choose device.
     UIActionSheet *sheet =
         [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Connect to device", nil)
                                     delegate:self
@@ -87,11 +87,15 @@ static NSString * kReceiverAppID;
       [sheet addButtonWithTitle:device.friendlyName];
     }
 
+    // [START_EXCLUDE]
+    // Further customizations
     [sheet addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
     sheet.cancelButtonIndex = sheet.numberOfButtons - 1;
-
-    //show device selection
+    // [END_EXCLUDE]
+    
+    // Show device selection.
     [sheet showInView:_chromecastButton];
+    // [END showing-devices]
   } else {
     // Gather stats from device.
     [self updateStatsFromDevice];
@@ -105,7 +109,7 @@ static NSString * kReceiverAppID;
       [sheet addButtonWithTitle:mediaTitle];
     }
 
-    //Offer disconnect option
+    // Offer disconnect option.
     [sheet addButtonWithTitle:@"Disconnect"];
     [sheet addButtonWithTitle:@"Cancel"];
     sheet.destructiveButtonIndex = (mediaTitle != nil ? 1 : 0);
@@ -131,12 +135,13 @@ static NSString * kReceiverAppID;
     return;
 
   NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+  // [START device-selection]
   self.deviceManager =
       [[GCKDeviceManager alloc] initWithDevice:self.selectedDevice
                              clientPackageName:[info objectForKey:@"CFBundleIdentifier"]];
   self.deviceManager.delegate = self;
   [self.deviceManager connect];
-
+  // [END device-selection]
 }
 
 - (void)deviceDisconnected {
@@ -147,18 +152,18 @@ static NSString * kReceiverAppID;
 
 - (void)updateButtonStates {
   if (self.deviceScanner.devices.count == 0) {
-    //Hide the cast button
+    // Hide the cast button.
     _chromecastButton.hidden = YES;
   } else {
-    //Show cast button
+    // Show cast button.
     [_chromecastButton setImage:_btnImage forState:UIControlStateNormal];
     _chromecastButton.hidden = NO;
 
     if (self.deviceManager && self.isDeviceConnected) {
-      //Show cast button in enabled state
+      // Show cast button in enabled state.
       [_chromecastButton setTintColor:[UIColor blueColor]];
     } else {
-      //Show cast button in disabled state
+      // Show cast button in disabled state.
       [_chromecastButton setTintColor:[UIColor grayColor]];
 
     }
@@ -166,11 +171,11 @@ static NSString * kReceiverAppID;
 
 }
 
-//Cast video
+// Cast video.
 - (IBAction)castVideo:(id)sender {
   NSLog(@"Cast Video");
 
-  //Show alert if not connected
+  // Show alert if not connected.
   if (!self.deviceManager || !self.isDeviceConnected) {
     UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Connected", nil)
@@ -182,7 +187,8 @@ static NSString * kReceiverAppID;
     return;
   }
 
-  //Define Media metadata
+  // Define Media metadata.
+  // [START media-metadata]
   GCKMediaMetadata *metadata = [[GCKMediaMetadata alloc] init];
 
   [metadata setString:@"Big Buck Bunny (2008)" forKey:kGCKMetadataKeyTitle];
@@ -198,8 +204,10 @@ static NSString * kReceiverAppID;
                                                  "gtv-videos-bucket/sample/images/BigBuckBunny.jpg"]
             width:480
            height:360]];
+  // [END media-metadata]
 
-  //define Media information
+  // Define Media information.
+  // [START load-media]
   GCKMediaInformation *mediaInformation =
       [[GCKMediaInformation alloc] initWithContentID:
               @"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
@@ -209,8 +217,9 @@ static NSString * kReceiverAppID;
                                       streamDuration:0
                                           customData:nil];
 
-  //cast video
+  // Cast the video.
   [_mediaControlChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
+  // [END load-media]
 
 }
 
@@ -260,6 +269,7 @@ static NSString * kReceiverAppID;
   [self.deviceManager launchApplication:kReceiverAppID];
 }
 
+// [START media-control-channel]
 - (void)deviceManager:(GCKDeviceManager *)deviceManager
     didConnectToCastApplication:(GCKApplicationMetadata *)applicationMetadata
                       sessionID:(NSString *)sessionID
@@ -269,9 +279,11 @@ static NSString * kReceiverAppID;
   self.mediaControlChannel = [[GCKMediaControlChannel alloc] init];
   self.mediaControlChannel.delegate = self;
   [self.deviceManager addChannel:self.mediaControlChannel];
+  // [START_EXCLUDE silent]
   [self.mediaControlChannel requestStatus];
-
+  //[END_EXCLUDE silent]
 }
+// [END media-control-channel]
 
 - (void)deviceManager:(GCKDeviceManager *)deviceManager
     didFailToConnectToApplicationWithError:(NSError *)error {
