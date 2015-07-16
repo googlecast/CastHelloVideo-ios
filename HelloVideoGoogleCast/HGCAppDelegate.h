@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HGCVAppDelegate : UIResponder<UIApplicationDelegate>
+@interface HGCAppDelegate : UIResponder<UIApplicationDelegate>
 
 @property(strong, nonatomic) UIWindow *window;
 
