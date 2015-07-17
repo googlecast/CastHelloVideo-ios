@@ -10,26 +10,42 @@
 		CC34F3D41885E326007E3FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D31885E326007E3FFC /* Foundation.framework */; };
 		CC34F3D61885E326007E3FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D51885E326007E3FFC /* CoreGraphics.framework */; };
 		CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
-		CC34F3DE1885E326007E3FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC34F3DC1885E326007E3FFC /* InfoPlist.strings */; };
-		CC34F3E01885E326007E3FFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC34F3DF1885E326007E3FFC /* main.m */; };
-		CC34F3E41885E326007E3FFC /* HGCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC34F3E31885E326007E3FFC /* HGCAppDelegate.m */; };
-		CC34F3EF1885E326007E3FFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC34F3EE1885E326007E3FFC /* Images.xcassets */; };
 		CC34F3F61885E326007E3FFC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3F51885E326007E3FFC /* XCTest.framework */; };
 		CC34F3F71885E326007E3FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D31885E326007E3FFC /* Foundation.framework */; };
 		CC34F3F81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
 		CC34F4001885E326007E3FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC34F3FE1885E326007E3FFC /* InfoPlist.strings */; };
 		CC34F4021885E326007E3FFC /* HelloVideoGoogleCastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC34F4011885E326007E3FFC /* HelloVideoGoogleCastTests.m */; };
-		CC34F40F1885E4B8007E3FFC /* icon-cast-connected.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40B1885E4B8007E3FFC /* icon-cast-connected.png */; };
-		CC34F4101885E4B8007E3FFC /* icon-cast-connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40C1885E4B8007E3FFC /* icon-cast-connected@2x.png */; };
-		CC34F4111885E4B8007E3FFC /* icon-cast-identified.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40D1885E4B8007E3FFC /* icon-cast-identified.png */; };
-		CC34F4121885E4B8007E3FFC /* icon-cast-identified@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC34F40E1885E4B8007E3FFC /* icon-cast-identified@2x.png */; };
 		CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
 		CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
-		CCE5BD5419709A3400016BAB /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5319709A3400016BAB /* GoogleCast.framework */; };
-		EA021AE11B555A6F009FC66F /* icon-cast-connected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA021ADF1B555A6F009FC66F /* icon-cast-connected@3x.png */; };
-		EA021AE21B555A6F009FC66F /* icon-cast-identified@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA021AE01B555A6F009FC66F /* icon-cast-identified@3x.png */; };
-		EA021AE61B556364009FC66F /* HelloVideoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA021AE51B556364009FC66F /* HelloVideoStoryboard.storyboard */; };
-		EA06D6281B594E6500F24159 /* HGCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA06D6271B594E6500F24159 /* HGCViewController.m */; };
+		EAD0BBE91B59A3B1003F158E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */; };
+		EAD0BBEB1B59A3B1003F158E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
+		EAD0BBEC1B59A3B1003F158E /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
+		EAD0BBED1B59A3B1003F158E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D51885E326007E3FFC /* CoreGraphics.framework */; };
+		EAD0BBEE1B59A3B1003F158E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
+		EAD0BBEF1B59A3B1003F158E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D31885E326007E3FFC /* Foundation.framework */; };
+		EAD0BBF91B59A3DB003F158E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD0BBF51B59A3DB003F158E /* AppDelegate.swift */; };
+		EAD0BBFB1B59A3DB003F158E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD0BBF81B59A3DB003F158E /* ViewController.swift */; };
+		EAD0BC0F1B59A42F003F158E /* HGCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD0BC0A1B59A42F003F158E /* HGCAppDelegate.m */; };
+		EAD0BC101B59A42F003F158E /* HGCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD0BC0C1B59A42F003F158E /* HGCViewController.m */; };
+		EAD0BC111B59A42F003F158E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD0BC0D1B59A42F003F158E /* main.m */; };
+		EAD0BC1C1B59A5AC003F158E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC131B59A5AC003F158E /* en.lproj */; };
+		EAD0BC1D1B59A5AC003F158E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC131B59A5AC003F158E /* en.lproj */; };
+		EAD0BC1E1B59A5AC003F158E /* HelloVideoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC141B59A5AC003F158E /* HelloVideoStoryboard.storyboard */; };
+		EAD0BC1F1B59A5AC003F158E /* HelloVideoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC141B59A5AC003F158E /* HelloVideoStoryboard.storyboard */; };
+		EAD0BC201B59A5AC003F158E /* icon-cast-connected.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC151B59A5AC003F158E /* icon-cast-connected.png */; };
+		EAD0BC211B59A5AC003F158E /* icon-cast-connected.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC151B59A5AC003F158E /* icon-cast-connected.png */; };
+		EAD0BC221B59A5AC003F158E /* icon-cast-connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC161B59A5AC003F158E /* icon-cast-connected@2x.png */; };
+		EAD0BC231B59A5AC003F158E /* icon-cast-connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC161B59A5AC003F158E /* icon-cast-connected@2x.png */; };
+		EAD0BC241B59A5AC003F158E /* icon-cast-connected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC171B59A5AC003F158E /* icon-cast-connected@3x.png */; };
+		EAD0BC251B59A5AC003F158E /* icon-cast-connected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC171B59A5AC003F158E /* icon-cast-connected@3x.png */; };
+		EAD0BC261B59A5AC003F158E /* icon-cast-identified.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC181B59A5AC003F158E /* icon-cast-identified.png */; };
+		EAD0BC271B59A5AC003F158E /* icon-cast-identified.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC181B59A5AC003F158E /* icon-cast-identified.png */; };
+		EAD0BC281B59A5AC003F158E /* icon-cast-identified@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC191B59A5AC003F158E /* icon-cast-identified@2x.png */; };
+		EAD0BC291B59A5AC003F158E /* icon-cast-identified@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC191B59A5AC003F158E /* icon-cast-identified@2x.png */; };
+		EAD0BC2A1B59A5AC003F158E /* icon-cast-identified@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC1A1B59A5AC003F158E /* icon-cast-identified@3x.png */; };
+		EAD0BC2B1B59A5AC003F158E /* icon-cast-identified@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC1A1B59A5AC003F158E /* icon-cast-identified@3x.png */; };
+		EAD0BC2C1B59A5AC003F158E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC1B1B59A5AC003F158E /* Images.xcassets */; };
+		EAD0BC2D1B59A5AC003F158E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD0BC1B1B59A5AC003F158E /* Images.xcassets */; };
 		EF87401919CCA53700B7FBA3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,36 +60,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19D3832CFB1FE7B9C08BB42A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CC07763F1890823E00577499 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = ../GoogleCast.framework; sourceTree = "<group>"; };
-		CC34F3D01885E326007E3FFC /* HelloVideoGoogleCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVideoGoogleCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC34F3D01885E326007E3FFC /* HelloVideoGoogleCastObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVideoGoogleCastObjectiveC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC34F3D31885E326007E3FFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CC34F3D51885E326007E3FFC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CC34F3D71885E326007E3FFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CC34F3DB1885E326007E3FFC /* HelloVideoGoogleCast-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloVideoGoogleCast-Info.plist"; sourceTree = "<group>"; };
-		CC34F3DD1885E326007E3FFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CC34F3DF1885E326007E3FFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CC34F3E11885E326007E3FFC /* HelloVideoGoogleCast-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloVideoGoogleCast-Prefix.pch"; sourceTree = "<group>"; };
-		CC34F3E21885E326007E3FFC /* HGCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGCAppDelegate.h; sourceTree = "<group>"; };
-		CC34F3E31885E326007E3FFC /* HGCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGCAppDelegate.m; sourceTree = "<group>"; };
-		CC34F3EE1885E326007E3FFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC34F3F41885E326007E3FFC /* HelloVideoGoogleCastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloVideoGoogleCastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC34F3F51885E326007E3FFC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CC34F3FD1885E326007E3FFC /* HelloVideoGoogleCastTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloVideoGoogleCastTests-Info.plist"; sourceTree = "<group>"; };
 		CC34F3FF1885E326007E3FFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CC34F4011885E326007E3FFC /* HelloVideoGoogleCastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloVideoGoogleCastTests.m; sourceTree = "<group>"; };
-		CC34F40B1885E4B8007E3FFC /* icon-cast-connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-connected.png"; sourceTree = "<group>"; };
-		CC34F40C1885E4B8007E3FFC /* icon-cast-connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-connected@2x.png"; sourceTree = "<group>"; };
-		CC34F40D1885E4B8007E3FFC /* icon-cast-identified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-identified.png"; sourceTree = "<group>"; };
-		CC34F40E1885E4B8007E3FFC /* icon-cast-identified@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-identified@2x.png"; sourceTree = "<group>"; };
-		CC34F416188611E9007E3FFC /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = "../../../../Downloads/GoogleCastFramework-2.0-Release/GoogleCast.framework"; sourceTree = "<group>"; };
 		CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
 		CCE5BD5119709A1700016BAB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		CCE5BD5319709A3400016BAB /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
-		EA021ADF1B555A6F009FC66F /* icon-cast-connected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-connected@3x.png"; sourceTree = "<group>"; };
-		EA021AE01B555A6F009FC66F /* icon-cast-identified@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cast-identified@3x.png"; sourceTree = "<group>"; };
-		EA021AE51B556364009FC66F /* HelloVideoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HelloVideoStoryboard.storyboard; sourceTree = "<group>"; };
-		EA06D6261B594E6500F24159 /* HGCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCViewController.h; sourceTree = "<group>"; };
-		EA06D6271B594E6500F24159 /* HGCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCViewController.m; sourceTree = "<group>"; };
+		D21C6694A003407C2302C6F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EAD0BBF41B59A3B1003F158E /* HelloVideoGoogleCastSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVideoGoogleCastSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD0BBF51B59A3DB003F158E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HelloVideoGoogleCastSwift/AppDelegate.swift; sourceTree = "<group>"; };
+		EAD0BBF61B59A3DB003F158E /* HelloVideoGoogleCast-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HelloVideoGoogleCast-Bridging-Header.h"; path = "HelloVideoGoogleCastSwift/HelloVideoGoogleCast-Bridging-Header.h"; sourceTree = "<group>"; };
+		EAD0BBF71B59A3DB003F158E /* HelloVideoGoogleCastSwift-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "HelloVideoGoogleCastSwift-Info.plist"; path = "HelloVideoGoogleCastSwift/HelloVideoGoogleCastSwift-Info.plist"; sourceTree = "<group>"; };
+		EAD0BBF81B59A3DB003F158E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = HelloVideoGoogleCastSwift/ViewController.swift; sourceTree = "<group>"; };
+		EAD0BC071B59A42F003F158E /* HelloVideoGoogleCastObjectiveC-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "HelloVideoGoogleCastObjectiveC-Info.plist"; path = "HelloVideoGoogleCastObjectiveC/HelloVideoGoogleCastObjectiveC-Info.plist"; sourceTree = "<group>"; };
+		EAD0BC081B59A42F003F158E /* HelloVideoGoogleCastObjectiveC-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HelloVideoGoogleCastObjectiveC-Prefix.pch"; path = "HelloVideoGoogleCastObjectiveC/HelloVideoGoogleCastObjectiveC-Prefix.pch"; sourceTree = "<group>"; };
+		EAD0BC091B59A42F003F158E /* HGCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HGCAppDelegate.h; path = HelloVideoGoogleCastObjectiveC/HGCAppDelegate.h; sourceTree = "<group>"; };
+		EAD0BC0A1B59A42F003F158E /* HGCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGCAppDelegate.m; path = HelloVideoGoogleCastObjectiveC/HGCAppDelegate.m; sourceTree = "<group>"; };
+		EAD0BC0B1B59A42F003F158E /* HGCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HGCViewController.h; path = HelloVideoGoogleCastObjectiveC/HGCViewController.h; sourceTree = "<group>"; };
+		EAD0BC0C1B59A42F003F158E /* HGCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGCViewController.m; path = HelloVideoGoogleCastObjectiveC/HGCViewController.m; sourceTree = "<group>"; };
+		EAD0BC0D1B59A42F003F158E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HelloVideoGoogleCastObjectiveC/main.m; sourceTree = "<group>"; };
+		EAD0BC131B59A5AC003F158E /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = Shared/en.lproj; sourceTree = "<group>"; };
+		EAD0BC141B59A5AC003F158E /* HelloVideoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HelloVideoStoryboard.storyboard; path = Shared/HelloVideoStoryboard.storyboard; sourceTree = "<group>"; };
+		EAD0BC151B59A5AC003F158E /* icon-cast-connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-cast-connected.png"; path = "Shared/icon-cast-connected.png"; sourceTree = "<group>"; };
+		EAD0BC161B59A5AC003F158E /* icon-cast-connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-cast-connected@2x.png"; path = "Shared/icon-cast-connected@2x.png"; sourceTree = "<group>"; };
+		EAD0BC171B59A5AC003F158E /* icon-cast-connected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-cast-connected@3x.png"; path = "Shared/icon-cast-connected@3x.png"; sourceTree = "<group>"; };
+		EAD0BC181B59A5AC003F158E /* icon-cast-identified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-cast-identified.png"; path = "Shared/icon-cast-identified.png"; sourceTree = "<group>"; };
+		EAD0BC191B59A5AC003F158E /* icon-cast-identified@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-cast-identified@2x.png"; path = "Shared/icon-cast-identified@2x.png"; sourceTree = "<group>"; };
+		EAD0BC1A1B59A5AC003F158E /* icon-cast-identified@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-cast-identified@3x.png"; path = "Shared/icon-cast-identified@3x.png"; sourceTree = "<group>"; };
+		EAD0BC1B1B59A5AC003F158E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Shared/Images.xcassets; sourceTree = "<group>"; };
 		EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -83,7 +104,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF87401919CCA53700B7FBA3 /* SystemConfiguration.framework in Frameworks */,
-				CCE5BD5419709A3400016BAB /* GoogleCast.framework in Frameworks */,
 				CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */,
 				CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */,
 				CC34F3D61885E326007E3FFC /* CoreGraphics.framework in Frameworks */,
@@ -102,24 +122,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAD0BBE81B59A3B1003F158E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD0BBE91B59A3B1003F158E /* SystemConfiguration.framework in Frameworks */,
+				EAD0BBEB1B59A3B1003F158E /* CoreText.framework in Frameworks */,
+				EAD0BBEC1B59A3B1003F158E /* MediaAccessibility.framework in Frameworks */,
+				EAD0BBED1B59A3B1003F158E /* CoreGraphics.framework in Frameworks */,
+				EAD0BBEE1B59A3B1003F158E /* UIKit.framework in Frameworks */,
+				EAD0BBEF1B59A3B1003F158E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		CC34F3C71885E326007E3FFC = {
 			isa = PBXGroup;
 			children = (
-				CC34F3D91885E326007E3FFC /* HelloVideoGoogleCast */,
+				EAD0BC121B59A59C003F158E /* Shared */,
+				EAD0BBE51B59A34C003F158E /* HelloVideoGoogleCastSwift */,
+				EAD0BBE31B59A335003F158E /* HelloVideoGoogleCastObjectiveC */,
 				CC34F3FB1885E326007E3FFC /* HelloVideoGoogleCastTests */,
 				CC34F3D21885E326007E3FFC /* Frameworks */,
 				CC34F3D11885E326007E3FFC /* Products */,
+				F6F888D9D04FDC14C78033B9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		CC34F3D11885E326007E3FFC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CC34F3D01885E326007E3FFC /* HelloVideoGoogleCast.app */,
+				CC34F3D01885E326007E3FFC /* HelloVideoGoogleCastObjectiveC.app */,
 				CC34F3F41885E326007E3FFC /* HelloVideoGoogleCastTests.xctest */,
+				EAD0BBF41B59A3B1003F158E /* HelloVideoGoogleCastSwift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,48 +165,15 @@
 			isa = PBXGroup;
 			children = (
 				EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */,
-				CCE5BD5319709A3400016BAB /* GoogleCast.framework */,
 				CCE5BD5119709A1700016BAB /* CoreText.framework */,
 				CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */,
 				CC07763F1890823E00577499 /* GoogleCast.framework */,
-				CC34F416188611E9007E3FFC /* GoogleCast.framework */,
 				CC34F3D31885E326007E3FFC /* Foundation.framework */,
 				CC34F3D51885E326007E3FFC /* CoreGraphics.framework */,
 				CC34F3D71885E326007E3FFC /* UIKit.framework */,
 				CC34F3F51885E326007E3FFC /* XCTest.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CC34F3D91885E326007E3FFC /* HelloVideoGoogleCast */ = {
-			isa = PBXGroup;
-			children = (
-				EA06D6261B594E6500F24159 /* HGCViewController.h */,
-				EA06D6271B594E6500F24159 /* HGCViewController.m */,
-				EA021AE51B556364009FC66F /* HelloVideoStoryboard.storyboard */,
-				CC34F3E21885E326007E3FFC /* HGCAppDelegate.h */,
-				CC34F3E31885E326007E3FFC /* HGCAppDelegate.m */,
-				CC34F3EE1885E326007E3FFC /* Images.xcassets */,
-				CC34F3DA1885E326007E3FFC /* Supporting Files */,
-			);
-			path = HelloVideoGoogleCast;
-			sourceTree = "<group>";
-		};
-		CC34F3DA1885E326007E3FFC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				EA021ADF1B555A6F009FC66F /* icon-cast-connected@3x.png */,
-				EA021AE01B555A6F009FC66F /* icon-cast-identified@3x.png */,
-				CC34F40B1885E4B8007E3FFC /* icon-cast-connected.png */,
-				CC34F40C1885E4B8007E3FFC /* icon-cast-connected@2x.png */,
-				CC34F40D1885E4B8007E3FFC /* icon-cast-identified.png */,
-				CC34F40E1885E4B8007E3FFC /* icon-cast-identified@2x.png */,
-				CC34F3DB1885E326007E3FFC /* HelloVideoGoogleCast-Info.plist */,
-				CC34F3DC1885E326007E3FFC /* InfoPlist.strings */,
-				CC34F3DF1885E326007E3FFC /* main.m */,
-				CC34F3E11885E326007E3FFC /* HelloVideoGoogleCast-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CC34F3FB1885E326007E3FFC /* HelloVideoGoogleCastTests */ = {
@@ -190,12 +194,62 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EAD0BBE31B59A335003F158E /* HelloVideoGoogleCastObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				EAD0BC071B59A42F003F158E /* HelloVideoGoogleCastObjectiveC-Info.plist */,
+				EAD0BC081B59A42F003F158E /* HelloVideoGoogleCastObjectiveC-Prefix.pch */,
+				EAD0BC091B59A42F003F158E /* HGCAppDelegate.h */,
+				EAD0BC0A1B59A42F003F158E /* HGCAppDelegate.m */,
+				EAD0BC0B1B59A42F003F158E /* HGCViewController.h */,
+				EAD0BC0C1B59A42F003F158E /* HGCViewController.m */,
+				EAD0BC0D1B59A42F003F158E /* main.m */,
+			);
+			name = HelloVideoGoogleCastObjectiveC;
+			sourceTree = "<group>";
+		};
+		EAD0BBE51B59A34C003F158E /* HelloVideoGoogleCastSwift */ = {
+			isa = PBXGroup;
+			children = (
+				EAD0BBF51B59A3DB003F158E /* AppDelegate.swift */,
+				EAD0BBF61B59A3DB003F158E /* HelloVideoGoogleCast-Bridging-Header.h */,
+				EAD0BBF71B59A3DB003F158E /* HelloVideoGoogleCastSwift-Info.plist */,
+				EAD0BBF81B59A3DB003F158E /* ViewController.swift */,
+			);
+			name = HelloVideoGoogleCastSwift;
+			sourceTree = "<group>";
+		};
+		EAD0BC121B59A59C003F158E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EAD0BC131B59A5AC003F158E /* en.lproj */,
+				EAD0BC141B59A5AC003F158E /* HelloVideoStoryboard.storyboard */,
+				EAD0BC151B59A5AC003F158E /* icon-cast-connected.png */,
+				EAD0BC161B59A5AC003F158E /* icon-cast-connected@2x.png */,
+				EAD0BC171B59A5AC003F158E /* icon-cast-connected@3x.png */,
+				EAD0BC181B59A5AC003F158E /* icon-cast-identified.png */,
+				EAD0BC191B59A5AC003F158E /* icon-cast-identified@2x.png */,
+				EAD0BC1A1B59A5AC003F158E /* icon-cast-identified@3x.png */,
+				EAD0BC1B1B59A5AC003F158E /* Images.xcassets */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		F6F888D9D04FDC14C78033B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D21C6694A003407C2302C6F9 /* Pods.debug.xcconfig */,
+				19D3832CFB1FE7B9C08BB42A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CC34F3CF1885E326007E3FFC /* HelloVideoGoogleCast */ = {
+		CC34F3CF1885E326007E3FFC /* HelloVideoGoogleCastObjectiveC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC34F4051885E327007E3FFC /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCast" */;
+			buildConfigurationList = CC34F4051885E327007E3FFC /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCastObjectiveC" */;
 			buildPhases = (
 				CC34F3CC1885E326007E3FFC /* Sources */,
 				CC34F3CD1885E326007E3FFC /* Frameworks */,
@@ -205,9 +259,9 @@
 			);
 			dependencies = (
 			);
-			name = HelloVideoGoogleCast;
+			name = HelloVideoGoogleCastObjectiveC;
 			productName = HelloVideoGoogleCast;
-			productReference = CC34F3D01885E326007E3FFC /* HelloVideoGoogleCast.app */;
+			productReference = CC34F3D01885E326007E3FFC /* HelloVideoGoogleCastObjectiveC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CC34F3F31885E326007E3FFC /* HelloVideoGoogleCastTests */ = {
@@ -227,6 +281,23 @@
 			productName = HelloVideoGoogleCastTests;
 			productReference = CC34F3F41885E326007E3FFC /* HelloVideoGoogleCastTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EAD0BBE61B59A3B1003F158E /* HelloVideoGoogleCastSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD0BBF11B59A3B1003F158E /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCastSwift" */;
+			buildPhases = (
+				EAD0BBE71B59A3B1003F158E /* Sources */,
+				EAD0BBE81B59A3B1003F158E /* Frameworks */,
+				EAD0BBF01B59A3B1003F158E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloVideoGoogleCastSwift;
+			productName = HelloVideoGoogleCast;
+			productReference = EAD0BBF41B59A3B1003F158E /* HelloVideoGoogleCastSwift.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -256,8 +327,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CC34F3CF1885E326007E3FFC /* HelloVideoGoogleCast */,
+				CC34F3CF1885E326007E3FFC /* HelloVideoGoogleCastObjectiveC */,
 				CC34F3F31885E326007E3FFC /* HelloVideoGoogleCastTests */,
+				EAD0BBE61B59A3B1003F158E /* HelloVideoGoogleCastSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -267,15 +339,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC34F4111885E4B8007E3FFC /* icon-cast-identified.png in Resources */,
-				CC34F4101885E4B8007E3FFC /* icon-cast-connected@2x.png in Resources */,
-				CC34F40F1885E4B8007E3FFC /* icon-cast-connected.png in Resources */,
-				CC34F4121885E4B8007E3FFC /* icon-cast-identified@2x.png in Resources */,
-				EA021AE21B555A6F009FC66F /* icon-cast-identified@3x.png in Resources */,
-				EA021AE11B555A6F009FC66F /* icon-cast-connected@3x.png in Resources */,
-				CC34F3EF1885E326007E3FFC /* Images.xcassets in Resources */,
-				EA021AE61B556364009FC66F /* HelloVideoStoryboard.storyboard in Resources */,
-				CC34F3DE1885E326007E3FFC /* InfoPlist.strings in Resources */,
+				EAD0BC2C1B59A5AC003F158E /* Images.xcassets in Resources */,
+				EAD0BC221B59A5AC003F158E /* icon-cast-connected@2x.png in Resources */,
+				EAD0BC201B59A5AC003F158E /* icon-cast-connected.png in Resources */,
+				EAD0BC261B59A5AC003F158E /* icon-cast-identified.png in Resources */,
+				EAD0BC1E1B59A5AC003F158E /* HelloVideoStoryboard.storyboard in Resources */,
+				EAD0BC2A1B59A5AC003F158E /* icon-cast-identified@3x.png in Resources */,
+				EAD0BC281B59A5AC003F158E /* icon-cast-identified@2x.png in Resources */,
+				EAD0BC241B59A5AC003F158E /* icon-cast-connected@3x.png in Resources */,
+				EAD0BC1C1B59A5AC003F158E /* en.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +359,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAD0BBF01B59A3B1003F158E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD0BC2D1B59A5AC003F158E /* Images.xcassets in Resources */,
+				EAD0BC231B59A5AC003F158E /* icon-cast-connected@2x.png in Resources */,
+				EAD0BC211B59A5AC003F158E /* icon-cast-connected.png in Resources */,
+				EAD0BC271B59A5AC003F158E /* icon-cast-identified.png in Resources */,
+				EAD0BC1F1B59A5AC003F158E /* HelloVideoStoryboard.storyboard in Resources */,
+				EAD0BC2B1B59A5AC003F158E /* icon-cast-identified@3x.png in Resources */,
+				EAD0BC291B59A5AC003F158E /* icon-cast-identified@2x.png in Resources */,
+				EAD0BC251B59A5AC003F158E /* icon-cast-connected@3x.png in Resources */,
+				EAD0BC1D1B59A5AC003F158E /* en.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -294,9 +382,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC34F3E41885E326007E3FFC /* HGCAppDelegate.m in Sources */,
-				CC34F3E01885E326007E3FFC /* main.m in Sources */,
-				EA06D6281B594E6500F24159 /* HGCViewController.m in Sources */,
+				EAD0BC0F1B59A42F003F158E /* HGCAppDelegate.m in Sources */,
+				EAD0BC111B59A42F003F158E /* main.m in Sources */,
+				EAD0BC101B59A42F003F158E /* HGCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,25 +396,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAD0BBE71B59A3B1003F158E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD0BBFB1B59A3DB003F158E /* ViewController.swift in Sources */,
+				EAD0BBF91B59A3DB003F158E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		CC34F3FA1885E326007E3FFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CC34F3CF1885E326007E3FFC /* HelloVideoGoogleCast */;
+			target = CC34F3CF1885E326007E3FFC /* HelloVideoGoogleCastObjectiveC */;
 			targetProxy = CC34F3F91885E326007E3FFC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CC34F3DC1885E326007E3FFC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC34F3DD1885E326007E3FFC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		CC34F3FE1885E326007E3FFC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -424,8 +513,8 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
-				INFOPLIST_FILE = "HelloVideoGoogleCast/HelloVideoGoogleCast-Info.plist";
+				GCC_PREFIX_HEADER = "HelloVideoGoogleCastObjectiveC/HelloVideoGoogleCastObjectiveC-Prefix.pch";
+				INFOPLIST_FILE = "HelloVideoGoogleCastObjectiveC/HelloVideoGoogleCastObjectiveC-Info.plist";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -444,8 +533,8 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
-				INFOPLIST_FILE = "HelloVideoGoogleCast/HelloVideoGoogleCast-Info.plist";
+				GCC_PREFIX_HEADER = "HelloVideoGoogleCastObjectiveC/HelloVideoGoogleCastObjectiveC-Prefix.pch";
+				INFOPLIST_FILE = "HelloVideoGoogleCastObjectiveC/HelloVideoGoogleCastObjectiveC-Info.plist";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -494,6 +583,50 @@
 			};
 			name = Release;
 		};
+		EAD0BBF21B59A3B1003F158E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					.,
+					..,
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
+				INFOPLIST_FILE = "HelloVideoGoogleCastSwift/HelloVideoGoogleCastSwift-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_NAME = HelloVideoGoogleCastSwift;
+				SWIFT_OBJC_BRIDGING_HEADER = "HelloVideoGoogleCastSwift/HelloVideoGoogleCast-Bridging-Header.h";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EAD0BBF31B59A3B1003F158E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					.,
+					..,
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloVideoGoogleCast/HelloVideoGoogleCast-Prefix.pch";
+				INFOPLIST_FILE = "HelloVideoGoogleCastSwift/HelloVideoGoogleCastSwift-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_NAME = HelloVideoGoogleCastSwift;
+				SWIFT_OBJC_BRIDGING_HEADER = "HelloVideoGoogleCastSwift/HelloVideoGoogleCast-Bridging-Header.h";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -506,7 +639,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC34F4051885E327007E3FFC /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCast" */ = {
+		CC34F4051885E327007E3FFC /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCastObjectiveC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC34F4061885E327007E3FFC /* Debug */,
@@ -520,6 +653,15 @@
 			buildConfigurations = (
 				CC34F4091885E327007E3FFC /* Debug */,
 				CC34F40A1885E327007E3FFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD0BBF11B59A3B1003F158E /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCastSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD0BBF21B59A3B1003F158E /* Debug */,
+				EAD0BBF31B59A3B1003F158E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
