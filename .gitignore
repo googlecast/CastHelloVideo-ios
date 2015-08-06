@@ -19,5 +19,7 @@ DerivedData
 
 #CocoaPods
 Pods
+Podfile.lock
+HelloVideoGoogleCast.xcworkspace/
 
 GoogleCast.framework
