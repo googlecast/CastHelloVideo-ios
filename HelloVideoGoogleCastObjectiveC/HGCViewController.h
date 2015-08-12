@@ -13,11 +13,7 @@
 // limitations under the License.
 
 #import <UIKit/UIKit.h>
-#import <GoogleCast/GoogleCast.h>
 
-@interface HGCViewController : UIViewController<GCKDeviceScannerListener,
-                                                 GCKDeviceManagerDelegate,
-                                                 GCKMediaControlChannelDelegate,
-                                                 UIActionSheetDelegate>
+@interface HGCViewController : UIViewController
 
 @end

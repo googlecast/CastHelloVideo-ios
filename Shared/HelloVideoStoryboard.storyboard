@@ -60,11 +60,23 @@
                             <constraint firstAttribute="centerX" secondItem="gwN-K4-hJv" secondAttribute="centerX" id="gsZ-dA-jJp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="b4G-wx-ruH"/>
+                    <navigationItem key="navigationItem" id="b4G-wx-ruH">
+                        <barButtonItem key="rightBarButtonItem" image="icon-cast-identified.png" id="cmI-17-WDj">
+                            <connections>
+                                <action selector="chooseDevice:" destination="his-NW-nJg" id="EAf-AO-2GA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="googleCastButton" destination="cmI-17-WDj" id="ehE-To-4yb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dj6-yA-tsF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="755" y="296"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-cast-identified.png" width="24" height="24"/>
+    </resources>
 </document>

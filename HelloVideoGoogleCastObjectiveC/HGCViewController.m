@@ -13,23 +13,26 @@
 // limitations under the License.
 
 #import "HGCViewController.h"
-
+#import <GoogleCast/GoogleCast.h>
 
 static NSString * kReceiverAppID;
 
-@interface HGCViewController () {
+@interface HGCViewController () <GCKDeviceScannerListener,
+                                 GCKDeviceManagerDelegate,
+                                 GCKMediaControlChannelDelegate,
+                                 UIActionSheetDelegate>{
 
-  UIImage *_btnImage;
-  UIImage *_btnImageSelected;
 }
 
 @property GCKMediaControlChannel *mediaControlChannel;
 @property GCKApplicationMetadata *applicationMetadata;
 @property GCKDevice *selectedDevice;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *googleCastButton;
 @property(nonatomic, strong) GCKDeviceScanner *deviceScanner;
-@property(nonatomic, strong) UIButton *googleCastButton;
 @property(nonatomic, strong) GCKDeviceManager *deviceManager;
-@property(nonatomic, readonly) GCKMediaInformation *mediaInformation;
+@property(nonatomic, strong) GCKMediaInformation *mediaInformation;
+@property(nonatomic, strong) UIImage *btnImage;
+@property(nonatomic, strong) UIImage *btnImageSelected;
 
 @end
 
@@ -41,20 +44,12 @@ static NSString * kReceiverAppID;
   // Developer Console https://cast.google.com/publish
   kReceiverAppID=kGCKMediaDefaultReceiverApplicationID;
 
-  // Create Google Cast button.
-  _btnImage = [UIImage imageNamed:@"icon-cast-identified.png"];
-  _btnImageSelected = [UIImage imageNamed:@"icon-cast-connected.png"];
+  // Create images for Google Cast button.
+  self.btnImage = [UIImage imageNamed:@"icon-cast-identified.png"];
+  self.btnImageSelected = [UIImage imageNamed:@"icon-cast-connected.png"];
 
-  _googleCastButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  [_googleCastButton addTarget:self
-                        action:@selector(chooseDevice:)
-              forControlEvents:UIControlEventTouchDown];
-  _googleCastButton.frame = CGRectMake(0, 0, _btnImage.size.width, _btnImage.size.height);
-  [_googleCastButton setImage:nil forState:UIControlStateNormal];
-  _googleCastButton.hidden = YES;
-
-  self.navigationItem.rightBarButtonItem =
-      [[UIBarButtonItem alloc] initWithCustomView:_googleCastButton];
+  // Initially hide Cast button.
+  self.navigationItem.rightBarButtonItems = @[];
 
   // Establish filter criteria.
   GCKFilterCriteria *filterCriteria = [GCKFilterCriteria
@@ -62,8 +57,8 @@ static NSString * kReceiverAppID;
   // Initialize device scanner.
   self.deviceScanner = [[GCKDeviceScanner alloc] initWithFilterCriteria:filterCriteria];
 
-  [self.deviceScanner addListener:self];
-  [self.deviceScanner startScan];
+  [_deviceScanner addListener:self];
+  [_deviceScanner startScan];
 
 }
 
@@ -72,8 +67,8 @@ static NSString * kReceiverAppID;
   // Dispose of any resources that can be recreated.
 }
 
-- (void)chooseDevice:(id)sender {
-  if (self.selectedDevice == nil) {
+- (IBAction)chooseDevice:(id)sender {
+  if (_selectedDevice == nil) {
     // [START showing-devices]
     // Choose device.
     UIActionSheet *sheet =
@@ -83,7 +78,7 @@ static NSString * kReceiverAppID;
                       destructiveButtonTitle:nil
                            otherButtonTitles:nil];
 
-    for (GCKDevice *device in self.deviceScanner.devices) {
+    for (GCKDevice *device in _deviceScanner.devices) {
       [sheet addButtonWithTitle:device.friendlyName];
     }
 
@@ -94,15 +89,15 @@ static NSString * kReceiverAppID;
     // [END_EXCLUDE]
     
     // Show device selection.
-    [sheet showInView:_googleCastButton];
+    [sheet showInView:self.view];
   } else {
     // Gather stats from device.
     [self updateStatsFromDevice];
 
-    NSString *mediaTitle = [self.mediaInformation.metadata stringForKey:kGCKMetadataKeyTitle];
+    NSString *mediaTitle = [_mediaInformation.metadata stringForKey:kGCKMetadataKeyTitle];
 
     UIActionSheet *sheet = [[UIActionSheet alloc] init];
-    sheet.title = self.selectedDevice.friendlyName;
+    sheet.title = _selectedDevice.friendlyName;
     sheet.delegate = self;
     if (mediaTitle != nil) {
       [sheet addButtonWithTitle:mediaTitle];
@@ -114,28 +109,29 @@ static NSString * kReceiverAppID;
     sheet.destructiveButtonIndex = (mediaTitle != nil ? 1 : 0);
     sheet.cancelButtonIndex = (mediaTitle != nil ? 2 : 1);
 
-    [sheet showInView:_googleCastButton];
+    [sheet showInView:self.view];
   }
 }
 
 - (void)updateStatsFromDevice {
 
-  if (self.mediaControlChannel &&
-      self.deviceManager.applicationConnectionState == GCKConnectionStateConnected) {
-    _mediaInformation = self.mediaControlChannel.mediaStatus.mediaInformation;
+  if (_mediaControlChannel &&
+      _deviceManager.connectionState == GCKConnectionStateConnected) {
+    _mediaInformation = _mediaControlChannel.mediaStatus.mediaInformation;
   }
 }
 
 - (void)connectToDevice {
-  if (self.selectedDevice == nil)
+  if (_selectedDevice == nil) {
     return;
+  }
 
   NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
   self.deviceManager =
-      [[GCKDeviceManager alloc] initWithDevice:self.selectedDevice
+      [[GCKDeviceManager alloc] initWithDevice:_selectedDevice
                              clientPackageName:[info objectForKey:@"CFBundleIdentifier"]];
   self.deviceManager.delegate = self;
-  [self.deviceManager connect];
+  [_deviceManager connect];
 }
 
 - (void)deviceDisconnected {
@@ -145,40 +141,37 @@ static NSString * kReceiverAppID;
 }
 
 - (void)updateButtonStates {
-  if (self.deviceScanner.devices.count == 0) {
-    // Hide the cast button.
-    _googleCastButton.hidden = YES;
-  } else {
-    // Show cast button.
-    [_googleCastButton setImage:_btnImage forState:UIControlStateNormal];
-    _googleCastButton.hidden = NO;
-
-    if (self.deviceManager
-        && self.deviceManager.applicationConnectionState == GCKConnectionStateConnected) {
-      // Show cast button in enabled state.
+  if (_deviceScanner && _deviceScanner.devices.count > 0) {
+    // Show the Cast button.
+    self.navigationItem.rightBarButtonItems = @[_googleCastButton];
+    if (_deviceManager && _deviceManager.connectionState == GCKConnectionStateConnected) {
+      // Show the Cast button in the enabled state.
       [_googleCastButton setTintColor:[UIColor blueColor]];
     } else {
-      // Show cast button in disabled state.
+      // Show the Cast button in the disabled state.
       [_googleCastButton setTintColor:[UIColor grayColor]];
-
     }
+  } else {
+    //Don't show cast button.
+    self.navigationItem.rightBarButtonItems = @[];
   }
-
 }
 
 - (IBAction)castVideo:(id)sender {
   NSLog(@"Cast Video");
 
   // Show alert if not connected.
-  if (!self.deviceManager
-      || self.deviceManager.applicationConnectionState != GCKConnectionStateConnected) {
-    UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Connected", nil)
-                                   message:NSLocalizedString(@"Please connect to Cast device", nil)
-                                  delegate:nil
-                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                         otherButtonTitles:nil];
-    [alert show];
+  if (!_deviceManager
+      || _deviceManager.connectionState != GCKConnectionStateConnected) {
+    UIAlertController *alert =
+    [UIAlertController alertControllerWithTitle:@"Not Connected"
+                                        message:@"Please connect to Cast device"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
     return;
   }
 
@@ -213,7 +206,7 @@ static NSString * kReceiverAppID;
                                           customData:nil];
 
   // Cast the video.
-  [_mediaControlChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
+  [_mediaControlChannel loadMedia:mediaInformation autoplay:YES playPosition:0];
   // [END load-media]
 
 }
@@ -230,10 +223,10 @@ static NSString * kReceiverAppID;
 
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-  if (self.selectedDevice == nil) {
-    if (buttonIndex < self.deviceScanner.devices.count) {
-      self.selectedDevice = self.deviceScanner.devices[buttonIndex];
-      NSLog(@"Selecting device:%@", self.selectedDevice.friendlyName);
+  if (_selectedDevice == nil) {
+    if (buttonIndex < _deviceScanner.devices.count) {
+      self.selectedDevice = _deviceScanner.devices[buttonIndex];
+      NSLog(@"Selecting device:%@", _selectedDevice.friendlyName);
       [self connectToDevice];
     }
   } else {
@@ -241,10 +234,8 @@ static NSString * kReceiverAppID;
       NSLog(@"Disconnecting device:%@", self.selectedDevice.friendlyName);
       // New way of doing things: We're not going to stop the applicaton. We're just going
       // to leave it.
-      [self.deviceManager leaveApplication];
-      // If you want to force application to stop, uncomment below.
-      //[self.deviceManager stopApplicationWithSessionID:self.applicationMetadata.sessionID];
-      [self.deviceManager disconnect];
+      [_deviceManager leaveApplication];
+      [_deviceManager disconnect];
 
       [self deviceDisconnected];
       [self updateButtonStates];
@@ -258,10 +249,10 @@ static NSString * kReceiverAppID;
 #pragma mark - GCKDeviceManagerDelegate
 
 - (void)deviceManagerDidConnect:(GCKDeviceManager *)deviceManager {
-  NSLog(@"connected!!");
+  NSLog(@"connected to %@!", _selectedDevice.friendlyName);
 
   [self updateButtonStates];
-  [self.deviceManager launchApplication:kReceiverAppID];
+  [_deviceManager launchApplication:kReceiverAppID];
 }
 
 // [START media-control-channel]
@@ -273,9 +264,9 @@ static NSString * kReceiverAppID;
   NSLog(@"application has launched");
   self.mediaControlChannel = [[GCKMediaControlChannel alloc] init];
   self.mediaControlChannel.delegate = self;
-  [self.deviceManager addChannel:self.mediaControlChannel];
+  [_deviceManager addChannel:self.mediaControlChannel];
   // [START_EXCLUDE silent]
-  [self.mediaControlChannel requestStatus];
+  [_mediaControlChannel requestStatus];
   //[END_EXCLUDE silent]
 }
 // [END media-control-channel]
@@ -298,14 +289,12 @@ static NSString * kReceiverAppID;
 
 - (void)deviceManager:(GCKDeviceManager *)deviceManager didDisconnectWithError:(GCKError *)error {
   NSLog(@"Received notification that device disconnected");
-
   if (error != nil) {
     [self showError:error];
   }
 
   [self deviceDisconnected];
   [self updateButtonStates];
-
 }
 
 - (void)deviceManager:(GCKDeviceManager *)deviceManager
@@ -315,12 +304,15 @@ static NSString * kReceiverAppID;
 
 #pragma mark - misc
 - (void)showError:(NSError *)error {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-                                                  message:NSLocalizedString(error.description, nil)
-                                                 delegate:nil
-                                        cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                        otherButtonTitles:nil];
-  [alert show];
+  UIAlertController *alert =
+  [UIAlertController alertControllerWithTitle:@"Error"
+                                      message:error.description
+                               preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                   style:UIAlertActionStyleDefault
+                                                 handler:nil];
+  [alert addAction:action];
+  [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
