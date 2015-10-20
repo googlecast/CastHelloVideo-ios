@@ -43,7 +43,7 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     let filterCriteria = GCKFilterCriteria(forAvailableApplicationWithID:
         kGCKMediaDefaultReceiverApplicationID)
     deviceScanner = GCKDeviceScanner(filterCriteria:filterCriteria)
-    super.init(coder: aDecoder)
+    super.init(coder: aDecoder)!
   }
 
   override func viewDidLoad() {
@@ -59,7 +59,7 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
 
   func chooseDevice(sender:AnyObject) {
     if (selectedDevice == nil) {
-      var sheet : UIActionSheet = UIActionSheet(title: "Connect to Device",
+      let sheet : UIActionSheet = UIActionSheet(title: "Connect to Device",
         delegate: self,
         cancelButtonTitle: nil,
         destructiveButtonTitle: nil)
@@ -76,14 +76,14 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
       updateStatsFromDevice()
       let friendlyName = "Casting to \(selectedDevice!.friendlyName)"
 
-      var sheet : UIActionSheet = UIActionSheet(title: friendlyName,
+      let sheet : UIActionSheet = UIActionSheet(title: friendlyName,
                                              delegate: self,
                                     cancelButtonTitle: nil,
                                destructiveButtonTitle: nil)
       var buttonIndex = 0
 
       if let info = mediaInformation {
-        sheet.addButtonWithTitle(info.metadata.objectForKey(kGCKMetadataKeyTitle) as! String)
+        sheet.addButtonWithTitle((info.metadata.objectForKey(kGCKMetadataKeyTitle) as! String))
         buttonIndex++
       }
 
@@ -139,15 +139,22 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
 
   //Cast video
   @IBAction func castVideo(sender:AnyObject) {
-    println("Cast Video")
+    print("Cast Video")
 
     // Show alert if not connected.
     if (deviceManager?.connectionState != GCKConnectionState.Connected) {
-      let alert = UIAlertController(title: "Not Connected",
-        message: "Please connect to Cast device",
-        preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-      self.presentViewController(alert, animated: true, completion: nil)
+      if #available(iOS 8.0, *) {
+        let alert = UIAlertController(title: "Not Connected",
+          message: "Please connect to Cast device",
+          preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+      } else {
+        let alert = UIAlertView.init(title: "Not Connected",
+          message: "Please connect to Cast device", delegate: nil, cancelButtonTitle: "OK",
+          otherButtonTitles: "")
+        alert.show()
+      }
       return
     }
 
@@ -186,25 +193,30 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
   }
 
   func showError(error: NSError) {
-    var alert = UIAlertController(title: "Error",
-                                message: error.description,
-                         preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-    self.presentViewController(alert, animated: true, completion: nil)
+    if #available(iOS 8.0, *) {
+      let alert = UIAlertController(title: "Error",
+        message: error.description,
+        preferredStyle: UIAlertControllerStyle.Alert)
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+      self.presentViewController(alert, animated: true, completion: nil)
+    } else {
+      let alert = UIAlertView.init(title: "Error", message: error.description, delegate: nil,
+        cancelButtonTitle: "OK", otherButtonTitles: "")
+      alert.show()
+    }
   }
-
 }
 
 // MARK: GCKDeviceScannerListener
 extension ViewController {
 
   func deviceDidComeOnline(device: GCKDevice!) {
-    println("Device found: \(device.friendlyName)")
+    print("Device found: \(device.friendlyName)")
     updateButtonStates()
   }
 
   func deviceDidGoOffline(device: GCKDevice!) {
-    println("Device went away: \(device.friendlyName)")
+    print("Device went away: \(device.friendlyName)")
     updateButtonStates()
   }
 
@@ -219,7 +231,7 @@ extension ViewController {
     } else if (selectedDevice == nil) {
       if (buttonIndex < deviceScanner.devices.count) {
         selectedDevice = deviceScanner.devices[buttonIndex] as? GCKDevice
-        println("Selected device: \(selectedDevice!.friendlyName)")
+        print("Selected device: \(selectedDevice!.friendlyName)")
         connectToDevice()
       }
     } else if (actionSheet.buttonTitleAtIndex(buttonIndex) == kDisconnectTitle) {
@@ -238,7 +250,7 @@ extension ViewController {
 extension ViewController {
 
   func deviceManagerDidConnect(deviceManager: GCKDeviceManager!) {
-    println("Connected.")
+    print("Connected.")
 
     updateButtonStates()
     deviceManager.launchApplication(kReceiverAppID)
@@ -249,7 +261,7 @@ extension ViewController {
     applicationMetadata: GCKApplicationMetadata!,
     sessionID: String!,
     launchedApplication: Bool) {
-    println("Application has launched.")
+    print("Application has launched.")
     self.mediaControlChannel = GCKMediaControlChannel()
     mediaControlChannel!.delegate = self
     deviceManager.addChannel(mediaControlChannel)
@@ -259,7 +271,7 @@ extension ViewController {
 
   func deviceManager(deviceManager: GCKDeviceManager!,
     didFailToConnectToApplicationWithError error: NSError!) {
-    println("Received notification that device failed to connect to application.")
+    print("Received notification that device failed to connect to application.")
 
     showError(error)
     deviceDisconnected()
@@ -268,7 +280,7 @@ extension ViewController {
 
   func deviceManager(deviceManager: GCKDeviceManager!,
     didFailToConnectWithError error: NSError!) {
-    println("Received notification that device failed to connect.")
+    print("Received notification that device failed to connect.")
 
     showError(error)
     deviceDisconnected()
@@ -277,7 +289,7 @@ extension ViewController {
 
   func deviceManager(deviceManager: GCKDeviceManager!,
     didDisconnectWithError error: NSError!) {
-    println("Received notification that device disconnected.")
+    print("Received notification that device disconnected.")
 
     if (error != nil) {
       showError(error)

@@ -12,6 +12,8 @@
 		CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
 		CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
 		CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
+		EA7576401BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		EA7576411BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EAD0BBE91B59A3B1003F158E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */; };
 		EAD0BBEB1B59A3B1003F158E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
 		EAD0BBEC1B59A3B1003F158E /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
@@ -55,6 +57,7 @@
 		CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
 		CCE5BD5119709A1700016BAB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D21C6694A003407C2302C6F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAD0BBF41B59A3B1003F158E /* HelloVideoGoogleCastSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVideoGoogleCastSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD0BBF51B59A3DB003F158E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HelloVideoGoogleCastSwift/AppDelegate.swift; sourceTree = "<group>"; };
 		EAD0BBF61B59A3DB003F158E /* HelloVideoGoogleCast-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HelloVideoGoogleCast-Bridging-Header.h"; path = "HelloVideoGoogleCastSwift/HelloVideoGoogleCast-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 				EAD0BC191B59A5AC003F158E /* icon-cast-identified@2x.png */,
 				EAD0BC1A1B59A5AC003F158E /* icon-cast-identified@3x.png */,
 				EAD0BC1B1B59A5AC003F158E /* Images.xcassets */,
+				EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -239,6 +243,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HGCV;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Google Inc";
 			};
@@ -269,6 +274,7 @@
 				EAD0BC2C1B59A5AC003F158E /* Images.xcassets in Resources */,
 				EAD0BC221B59A5AC003F158E /* icon-cast-connected@2x.png in Resources */,
 				EAD0BC201B59A5AC003F158E /* icon-cast-connected.png in Resources */,
+				EA7576401BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */,
 				EAD0BC261B59A5AC003F158E /* icon-cast-identified.png in Resources */,
 				EAD0BC1E1B59A5AC003F158E /* HelloVideoStoryboard.storyboard in Resources */,
 				EAD0BC2A1B59A5AC003F158E /* icon-cast-identified@3x.png in Resources */,
@@ -285,6 +291,7 @@
 				EAD0BC2D1B59A5AC003F158E /* Images.xcassets in Resources */,
 				EAD0BC231B59A5AC003F158E /* icon-cast-connected@2x.png in Resources */,
 				EAD0BC211B59A5AC003F158E /* icon-cast-connected.png in Resources */,
+				EA7576411BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */,
 				EAD0BC271B59A5AC003F158E /* icon-cast-identified.png in Resources */,
 				EAD0BC1F1B59A5AC003F158E /* HelloVideoStoryboard.storyboard in Resources */,
 				EAD0BC2B1B59A5AC003F158E /* icon-cast-identified@3x.png in Resources */,
@@ -398,6 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -418,6 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -438,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -460,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,

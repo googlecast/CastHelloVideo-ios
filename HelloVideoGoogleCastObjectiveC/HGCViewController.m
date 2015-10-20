@@ -188,7 +188,7 @@ static NSString * kReceiverAppID;
                forKey:kGCKMetadataKeySubtitle];
 
   [metadata addImage:[[GCKImage alloc]
-      initWithURL:[[NSURL alloc] initWithString:@"http://commondatastorage.googleapis.com/"
+      initWithURL:[[NSURL alloc] initWithString:@"https://commondatastorage.googleapis.com/"
                                                  "gtv-videos-bucket/sample/images/BigBuckBunny.jpg"]
             width:480
            height:360]];
@@ -198,7 +198,7 @@ static NSString * kReceiverAppID;
   // [START load-media]
   GCKMediaInformation *mediaInformation =
       [[GCKMediaInformation alloc] initWithContentID:
-              @"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+              @"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                                           streamType:GCKMediaStreamTypeNone
                                          contentType:@"video/mp4"
                                             metadata:metadata
