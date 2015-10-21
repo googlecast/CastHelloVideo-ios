@@ -126,10 +126,9 @@ static NSString * kReceiverAppID;
     return;
   }
 
-  NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
   self.deviceManager =
       [[GCKDeviceManager alloc] initWithDevice:_selectedDevice
-                             clientPackageName:[info objectForKey:@"CFBundleIdentifier"]];
+                             clientPackageName:[NSBundle mainBundle].bundleIdentifier];
   self.deviceManager.delegate = self;
   [_deviceManager connect];
 }
