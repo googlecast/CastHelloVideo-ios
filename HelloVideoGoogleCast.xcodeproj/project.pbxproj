@@ -12,8 +12,8 @@
 		CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
 		CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
 		CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
-		EA7576401BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EA7576411BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		EA7576401BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; };
+		EA7576411BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; };
 		EAD0BBE91B59A3B1003F158E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */; };
 		EAD0BBEB1B59A3B1003F158E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
 		EAD0BBEC1B59A3B1003F158E /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
@@ -405,7 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -426,7 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -447,7 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -470,7 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
