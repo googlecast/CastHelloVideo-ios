@@ -32,7 +32,7 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     return UIImage(named: "icon-cast-connected.png")!
     }()
   private lazy var kReceiverAppID:String = {
-    //You can add your own app id here that you get by registering with the
+    // You can add your own app id here that you get by registering with the
     // Google Cast SDK Developer Console https://cast.google.com/publish
     return kGCKMediaDefaultReceiverApplicationID
     }()
@@ -55,9 +55,11 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     // Initialize device scanner
     deviceScanner.addListener(self)
     deviceScanner.startScan()
+    deviceScanner.passiveScan = true
   }
 
   func chooseDevice(sender:AnyObject) {
+    deviceScanner.passiveScan = false
     if (selectedDevice == nil) {
       let sheet : UIActionSheet = UIActionSheet(title: "Connect to Device",
         delegate: self,
@@ -226,6 +228,7 @@ extension ViewController {
 // MARK: UIActionSheetDelegate
 extension ViewController {
   func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    deviceScanner.passiveScan = true
     if (buttonIndex == actionSheet.cancelButtonIndex) {
       return
     } else if (selectedDevice == nil) {
