@@ -56,10 +56,9 @@ static NSString * kReceiverAppID;
                                        criteriaForAvailableApplicationWithID:kReceiverAppID];
   // Initialize device scanner.
   self.deviceScanner = [[GCKDeviceScanner alloc] initWithFilterCriteria:filterCriteria];
-
   [_deviceScanner addListener:self];
   [_deviceScanner startScan];
-
+  [_deviceScanner setPassiveScan:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +69,7 @@ static NSString * kReceiverAppID;
 - (IBAction)chooseDevice:(id)sender {
   if (_selectedDevice == nil) {
     // [START showing-devices]
+    [_deviceScanner setPassiveScan:NO];
     // Choose device.
     UIActionSheet *sheet =
         [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Connect to device", nil)
@@ -222,6 +222,7 @@ static NSString * kReceiverAppID;
 
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  [_deviceScanner setPassiveScan:YES];
   if (_selectedDevice == nil) {
     if (buttonIndex < _deviceScanner.devices.count) {
       self.selectedDevice = _deviceScanner.devices[buttonIndex];
