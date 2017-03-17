@@ -31,7 +31,7 @@ ries to "Link Binary With Libraries":
   * static NSString *const kReceiverAppID = @"1234ABCD";
 
 ## Documentation
-Google Cast iOS Sender Overview:  [https://developers.google.com/cast/docs/ios_sender](https://developers.google.com/cast/docs/ios_sender "Google Cast iOS Sender Overview")
+Google Cast iOS Sender Overview:  [https://developers.google.com/cast/docs/ios_sender_setup](https://developers.google.com/cast/docs/ios_sender "Google Cast iOS Sender Overview")
 
 ## References and How to report bugs
 * Cast APIs: [https://developers.google.com/cast/](https://developers.google.com/cast/ "Google Cast Documentation")
