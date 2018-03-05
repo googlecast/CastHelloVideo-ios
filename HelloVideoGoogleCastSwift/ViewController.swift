@@ -13,8 +13,9 @@
 // limitations under the License.
 
 import UIKit
+import GoogleCast
 
-@objc(HGCViewController)
+@objc(HGCViewController) // No need of this
 class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManagerDelegate,
                                         GCKMediaControlChannelDelegate, UIActionSheetDelegate {
   private let kCancelTitle = "Cancel"
@@ -27,10 +28,10 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
   private var deviceScanner: GCKDeviceScanner
   private lazy var btnImage:UIImage = {
     return UIImage(named: "icon-cast-identified.png")!
-    }()
+    }()!
   private lazy var btnImageselected:UIImage = {
     return UIImage(named: "icon-cast-connected.png")!
-    }()
+    }()!
   private lazy var kReceiverAppID:String = {
     // You can add your own app id here that you get by registering with the
     // Google Cast SDK Developer Console https://cast.google.com/publish
@@ -53,257 +54,248 @@ class ViewController: UIViewController, GCKDeviceScannerListener, GCKDeviceManag
     navigationItem.rightBarButtonItems = []
 
     // Initialize device scanner
-    deviceScanner.addListener(self)
-    deviceScanner.startScan()
-    deviceScanner.passiveScan = true
+    deviceScanner?.addListener(self)
+    deviceScanner?.startScan()
+    deviceScanner?.passiveScan = true
   }
 
-  func chooseDevice(sender:AnyObject) {
-    deviceScanner.passiveScan = false
-    if (selectedDevice == nil) {
-      let sheet : UIActionSheet = UIActionSheet(title: "Connect to Device",
-        delegate: self,
-        cancelButtonTitle: nil,
-        destructiveButtonTitle: nil)
-
-      for device in deviceScanner.devices  {
-        sheet.addButtonWithTitle(device.friendlyName)
-      }
-
-      // Add the cancel button at the end so that indexes of the titles map to the array index.
-      sheet.addButtonWithTitle(kCancelTitle)
-      sheet.cancelButtonIndex = sheet.numberOfButtons - 1
-      sheet.showInView(self.view)
-    } else {
-      updateStatsFromDevice()
-      let friendlyName = "Casting to \(selectedDevice!.friendlyName)"
-
-      let sheet : UIActionSheet = UIActionSheet(title: friendlyName,
-                                             delegate: self,
-                                    cancelButtonTitle: nil,
-                               destructiveButtonTitle: nil)
-      var buttonIndex = 0
-
-      if let info = mediaInformation {
-        sheet.addButtonWithTitle((info.metadata.objectForKey(kGCKMetadataKeyTitle) as! String))
-        buttonIndex++
-      }
-
-      // Offer disconnect option.
-      sheet.addButtonWithTitle(kDisconnectTitle)
-      sheet.addButtonWithTitle(kCancelTitle)
-      sheet.destructiveButtonIndex = buttonIndex++
-      sheet.cancelButtonIndex = buttonIndex
-
-      sheet.showInView(self.view)
+    func chooseDevice(sender:AnyObject) {
+        deviceScanner?.passiveScan = false
+        let friendlyName = "Casting to \(selectedDevice!.friendlyName)"
+        if (selectedDevice == nil) {
+            
+            let alert = UIAlertController(title: "Connect to Device", message: "Connect the nearby devices", preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            for device in (deviceScanner?.devices)!
+            {
+                
+                alert.addAction(UIAlertAction(title: friendlyName, style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) in
+                    print("foo")
+                }))
+            }
+            
+            
+            alert.addAction(UIAlertAction(title: cancleTitle, style: UIAlertActionStyle.cancel, handler: nil))
+            alert.show(self, sender: (Any).self)
+        }
+        else
+        {
+            updateStatus()
+            let friendlyName = "Casting to \(selectedDevice!.friendlyName)"
+            
+            
+            let alert = UIAlertController(title: friendlyName, message: "disConnect the nearby devices", preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            
+            if let info = mediaInformation {
+                alert.addAction(UIAlertAction(title: (info.metadata.object(forKey: kGCKMetadataKeyTitle) as! String ), style: UIAlertActionStyle.default, handler: nil))
+            }
+            
+            alert.addAction(UIAlertAction(title: disconnectTitle, style: UIAlertActionStyle.cancel, handler: nil))
+            alert.show(self, sender: (Any).self)
+        }
     }
-  }
-
-  func updateStatsFromDevice() {
-    if deviceManager?.connectionState == GCKConnectionState.Connected
-      && mediaControlChannel?.mediaStatus != nil {
-      mediaInformation = mediaControlChannel?.mediaStatus.mediaInformation
+    // MARK:- Added updateStatus
+    func updateStatus()
+    {
+        if deviceManager?.connectionState == GCKConnectionState.connected
+            && mediaControlChannel?.mediaStatus != nil {
+            mediaInformation = mediaControlChannel?.mediaStatus.mediaInformation
+        }
     }
-  }
-
-  func connectToDevice() {
-    if (selectedDevice == nil) {
-      return
+    func connectToDevice()
+    {
+        if (selectedDevice == nil)
+        {
+            return
+        }
+        let identifier = Bundle.main.bundleIdentifier
+        deviceManager = GCKDeviceManager(device: selectedDevice, clientPackageName: identifier)
+        deviceManager!.delegate = self
+        deviceManager!.connect()
     }
-    let identifier = NSBundle.mainBundle().bundleIdentifier
-    deviceManager = GCKDeviceManager(device: selectedDevice, clientPackageName: identifier)
-    deviceManager!.delegate = self
-    deviceManager!.connect()
-  }
-
-  func deviceDisconnected() {
-    selectedDevice = nil
-    deviceManager = nil
-  }
-
-  func updateButtonStates() {
-    if (deviceScanner.devices.count > 0) {
-      // Show the Cast button.
-      navigationItem.rightBarButtonItems = [googleCastButton!]
-      if (deviceManager != nil && deviceManager?.connectionState == GCKConnectionState.Connected) {
-        // Show the Cast button in the enabled state.
-        googleCastButton!.tintColor = UIColor.blueColor()
-      } else {
-        // Show the Cast button in the disabled state.
-        googleCastButton!.tintColor = UIColor.grayColor()
-      }
-    } else{
-      // Don't show Cast button.
-      navigationItem.rightBarButtonItems = []
+    
+    func deviceDisconnected()
+    {
+        selectedDevice = nil
+        deviceManager = nil
     }
-  }
-
-
+    
+    func updateButtonStates()
+    {
+        if ((deviceScanner?.devices)!.count > 0)
+        {
+            // Showing The Cast Button
+            
+            navigationItem.rightBarButtonItems = [castButton!]
+            if (deviceManager != nil && deviceManager?.connectionState == GCKConnectionState.connected) {
+                
+                //  Showing The Cast Button In Active Mode
+                castButton!.tintColor = UIColor.blue
+            } else {
+                // Showing The Cast Button In InActive/Disabled Mode
+                castButton!.tintColor = UIColor.gray
+            }
+        } else
+        {
+            // Not Showing Cast Button
+            navigationItem.rightBarButtonItems = []
+        }
+    }
   //Cast video
   @IBAction func castVideo(sender:AnyObject) {
-    print("Cast Video")
-
-    // Show alert if not connected.
-    if (deviceManager?.connectionState != GCKConnectionState.Connected) {
-      if #available(iOS 8.0, *) {
-        let alert = UIAlertController(title: "Not Connected",
-          message: "Please connect to Cast device",
-          preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-      } else {
-        let alert = UIAlertView.init(title: "Not Connected",
-          message: "Please connect to Cast device", delegate: nil, cancelButtonTitle: "OK",
-          otherButtonTitles: "")
-        alert.show()
-      }
-      return
+    if (deviceManager?.connectionState != GCKConnectionState.connected) {
+        if #available(iOS 8.0, *) {
+            let alert = UIAlertController(title: "Not Connected",
+                                          message: "Please connect the Availlable Device",
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertView.init(title: "Not Connected",
+                                         message: "Connet to the Cast Device", delegate: nil, cancelButtonTitle: "OK",
+                                         otherButtonTitles: "")
+            alert.show()
+        }
+        return
     }
-
-    // [START media-metadata]
+    
+    // MARK:- Starting Metadata
+    
     // Define Media Metadata.
     let metadata = GCKMediaMetadata()
-    metadata.setString("Big Buck Bunny (2008)", forKey: kGCKMetadataKeyTitle)
-    metadata.setString("Big Buck Bunny tells the story of a giant rabbit with a heart bigger " +
-        "than himself. When one sunny day three rodents rudely harass him, something " +
-        "snaps... and the rabbit ain't no bunny anymore! In the typical cartoon " +
-        "tradition he prepares the nasty rodents a comical revenge.",
-        forKey:kGCKMetadataKeySubtitle)
-
-    let url = NSURL(string:"https://commondatastorage.googleapis.com/gtv-videos-bucket/" +
-      "sample/images/BigBuckBunny.jpg")
-    metadata.addImage(GCKImage(URL: url, width: 480, height: 360))
-    // [END media-metadata]
-
-    // [START load-media]
+    metadata?.setString("Enter The Title", forKey: kGCKMetadataKeyTitle)
+    metadata?.setString("Enter the string .",
+                        forKey:kGCKMetadataKeySubtitle)
+    
+    let url = NSURL(string:"Enter Url of the image file ")
+    metadata?.addImage(GCKImage(url: url! as URL, width: 480, height: 360))
+    
+    // MARK:- Starting load Media
+    
     // Define Media Information.
     let mediaInformation = GCKMediaInformation(
-      contentID:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      streamType: GCKMediaStreamType.None,
-      contentType: "video/mp4",
-      metadata: metadata,
-      streamDuration: 0,
-      mediaTracks: [],
-      textTrackStyle: nil,
-      customData: nil
+        contentID:
+        "Enter URL of thr video file",
+        streamType: GCKMediaStreamType.none,
+        contentType: "video/mp4",
+        metadata: metadata,
+        streamDuration: 0,
+        mediaTracks: [],
+        textTrackStyle: nil,
+        customData: nil
     )
-
     // Cast the media
     mediaControlChannel!.loadMedia(mediaInformation, autoplay: true)
-    // [END load-media]
   }
 
-  func showError(error: NSError) {
-    if #available(iOS 8.0, *) {
-      let alert = UIAlertController(title: "Error",
-        message: error.description,
-        preferredStyle: UIAlertControllerStyle.Alert)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-      self.presentViewController(alert, animated: true, completion: nil)
-    } else {
-      let alert = UIAlertView.init(title: "Error", message: error.description, delegate: nil,
-        cancelButtonTitle: "OK", otherButtonTitles: "")
-      alert.show()
+    func showError(error: NSError) {
+        if #available(iOS 8.0, *) {
+            let alert = UIAlertController(title: "Error",
+                                          message: error.description,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertView.init(title: "Error", message: error.description, delegate: nil,
+                                         cancelButtonTitle: "OK", otherButtonTitles: "")
+            alert.show()
+        }
     }
-  }
-}
-
-// MARK: GCKDeviceScannerListener
-extension ViewController {
-
-  func deviceDidComeOnline(device: GCKDevice!) {
-    print("Device found: \(device.friendlyName)")
-    updateButtonStates()
-  }
-
-  func deviceDidGoOffline(device: GCKDevice!) {
-    print("Device went away: \(device.friendlyName)")
-    updateButtonStates()
-  }
-
-}
-
-
-// MARK: UIActionSheetDelegate
-extension ViewController {
-  func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-    deviceScanner.passiveScan = true
-    if (buttonIndex == actionSheet.cancelButtonIndex) {
-      return
-    } else if (selectedDevice == nil) {
-      if (buttonIndex < deviceScanner.devices.count) {
-        selectedDevice = deviceScanner.devices[buttonIndex] as? GCKDevice
-        print("Selected device: \(selectedDevice!.friendlyName)")
-        connectToDevice()
-      }
-    } else if (actionSheet.buttonTitleAtIndex(buttonIndex) == kDisconnectTitle) {
-      // Disconnect button.
-      deviceManager!.leaveApplication()
-      deviceManager!.disconnect()
-      deviceDisconnected()
-      updateButtonStates()
+    private func deviceDidComeOnline(device: GCKDevice!) {
+        print("Device found: \(device.friendlyName)")
+        updateButtonStates()
     }
-  }
-}
-
-// [START media-control-channel]
-// MARK: GCKDeviceManagerDelegate
-// [START_EXCLUDE silent]
-extension ViewController {
-
-  func deviceManagerDidConnect(deviceManager: GCKDeviceManager!) {
-    print("Connected.")
-
-    updateButtonStates()
-    deviceManager.launchApplication(kReceiverAppID)
-  }
-  // [END_EXCLUDE]
-  func deviceManager(deviceManager: GCKDeviceManager!,
-    didConnectToCastApplication
-    applicationMetadata: GCKApplicationMetadata!,
-    sessionID: String!,
-    launchedApplication: Bool) {
-    print("Application has launched.")
-    self.mediaControlChannel = GCKMediaControlChannel()
-    mediaControlChannel!.delegate = self
-    deviceManager.addChannel(mediaControlChannel)
-    mediaControlChannel!.requestStatus()
-  }
-  // [END media-control-channel]
-
-  func deviceManager(deviceManager: GCKDeviceManager!,
-    didFailToConnectToApplicationWithError error: NSError!) {
-    print("Received notification that device failed to connect to application.")
-
-    showError(error)
-    deviceDisconnected()
-    updateButtonStates()
-  }
-
-  func deviceManager(deviceManager: GCKDeviceManager!,
-    didFailToConnectWithError error: NSError!) {
-    print("Received notification that device failed to connect.")
-
-    showError(error)
-    deviceDisconnected()
-    updateButtonStates()
-  }
-
-  func deviceManager(deviceManager: GCKDeviceManager!,
-    didDisconnectWithError error: NSError!) {
-    print("Received notification that device disconnected.")
-
-    if (error != nil) {
-      showError(error)
+    
+    private func deviceDidGoOffline(device: GCKDevice!) {
+        print("Device offline: \(device.friendlyName)")
+        updateButtonStates()
     }
-
-    deviceDisconnected()
-    updateButtonStates()
-  }
-
-  func deviceManager(deviceManager: GCKDeviceManager!,
-    didReceiveApplicationMetadata metadata: GCKApplicationMetadata!) {
-    applicationMetadata = metadata
-  }
+    // MARK: UIActionSheetDelegate
+    
+    private func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        deviceScanner?.passiveScan = true
+        if (buttonIndex == actionSheet.cancelButtonIndex) {
+            return
+        } else if (selectedDevice == nil) {
+            if (buttonIndex < (deviceScanner?.devices.count)!) {
+                selectedDevice = deviceScanner?.devices[buttonIndex] as? GCKDevice
+                print("Selected device: \(selectedDevice!.friendlyName)")
+                connectToDevice()
+            }
+        } else if (actionSheet.buttonTitle(at: buttonIndex) == disconnectTitle) {
+            // Disconnect button.
+            deviceManager!.leaveApplication()
+            deviceManager!.disconnect()
+            deviceDisconnected()
+            updateButtonStates()
+        }
+    }
+    
+    
+    
+    // MARK :- Media Control Channel
+    
+    // MARK: GCKDeviceManagerDelegate
+    
+    
+    
+    func deviceManagerDidConnect(_ deviceManager: GCKDeviceManager!) {
+        print("Connected.")
+        
+        updateButtonStates()
+        deviceManager.launchApplication(receiverAPPID)
+    }
+    
+    
+    
+    func deviceManager(_ deviceManager: GCKDeviceManager!,
+                       didConnectToCastApplication
+        applicationMetadata: GCKApplicationMetadata!,
+                       sessionID: String!,
+                       launchedApplication: Bool) {
+        print("Application has launched.")
+        self.mediaControlChannel = GCKMediaControlChannel()
+        mediaControlChannel!.delegate = self
+        deviceManager.add(mediaControlChannel)
+        mediaControlChannel!.requestStatus()
+    }
+    
+    
+    private func deviceManager(deviceManager: GCKDeviceManager!,
+                               didFailToConnectToApplicationWithError error: Error!) {
+        print("Received notification that device failed to connect to application.")
+        
+        showError(error: error! as NSError)
+        deviceDisconnected()
+        updateButtonStates()
+    }
+    
+    private func deviceManager(deviceManager: GCKDeviceManager!,
+                               didFailToConnectWithError error: NSError!) {
+        print("Received notification that device failed to connect.")
+        
+        showError(error: error!)
+        deviceDisconnected()
+        updateButtonStates()
+    }
+    
+    private func deviceManager(deviceManager: GCKDeviceManager!,
+                               didDisconnectWithError error: Error!) {
+        print("Received notification that device disconnected.")
+        
+        if (error != nil) {
+            showError(error: error! as NSError)
+        }
+        
+        deviceDisconnected()
+        updateButtonStates()
+    }
+    
+    private func deviceManager(deviceManager: GCKDeviceManager!,
+                               didReceiveApplicationMetadata metadata: GCKApplicationMetadata!) {
+        applicationMetaData = metadata
+    }
 }
+
+

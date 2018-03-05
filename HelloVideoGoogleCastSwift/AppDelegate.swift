@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import UIKit
+import GoogleCast
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
@@ -26,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
     return true
   }
   
-  func logFromFunction(function: UnsafePointer<Int8>, message: String!) {
-    let functionName = String.fromCString(function)
-    print(functionName! + " - " + message)
-  }
+    func log(fromFunction function: UnsafePointer<Int8>!, message: String!) {
+        let functionName = String(cString:function)
+        print(functionName  +  message)
+    }
+    
 }

@@ -12,6 +12,7 @@
 		CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
 		CCE5BD5019709A1100016BAB /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD4F19709A1100016BAB /* MediaAccessibility.framework */; };
 		CCE5BD5219709A1700016BAB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE5BD5119709A1700016BAB /* CoreText.framework */; };
+		DC7E691F765B248A8E4BA6BA /* Pods_HelloVideoGoogleCastSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF8B3B3C6728FC62A1C3935 /* Pods_HelloVideoGoogleCastSwift.framework */; };
 		EA7576401BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; };
 		EA7576411BD6DEC1002033FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA75763F1BD6DEC1002033FB /* LaunchScreen.storyboard */; };
 		EAD0BBE91B59A3B1003F158E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87401819CCA53700B7FBA3 /* SystemConfiguration.framework */; };
@@ -48,6 +49,9 @@
 
 /* Begin PBXFileReference section */
 		19D3832CFB1FE7B9C08BB42A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4ACC4C488B776C4BD1ACA413 /* Pods-HelloVideoGoogleCastSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloVideoGoogleCastSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloVideoGoogleCastSwift/Pods-HelloVideoGoogleCastSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		7BF8B3B3C6728FC62A1C3935 /* Pods_HelloVideoGoogleCastSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloVideoGoogleCastSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD4B1F9600DD0747EE99446 /* Pods-HelloVideoGoogleCastSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloVideoGoogleCastSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloVideoGoogleCastSwift/Pods-HelloVideoGoogleCastSwift.release.xcconfig"; sourceTree = "<group>"; };
 		CC07763F1890823E00577499 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = ../GoogleCast.framework; sourceTree = "<group>"; };
 		CC34F3D01885E326007E3FFC /* HelloVideoGoogleCastObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVideoGoogleCastObjectiveC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC34F3D31885E326007E3FFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +110,7 @@
 				EAD0BBED1B59A3B1003F158E /* CoreGraphics.framework in Frameworks */,
 				EAD0BBEE1B59A3B1003F158E /* UIKit.framework in Frameworks */,
 				EAD0BBEF1B59A3B1003F158E /* Foundation.framework in Frameworks */,
+				DC7E691F765B248A8E4BA6BA /* Pods_HelloVideoGoogleCastSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +149,7 @@
 				CC34F3D51885E326007E3FFC /* CoreGraphics.framework */,
 				CC34F3D71885E326007E3FFC /* UIKit.framework */,
 				CC34F3F51885E326007E3FFC /* XCTest.framework */,
+				7BF8B3B3C6728FC62A1C3935 /* Pods_HelloVideoGoogleCastSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 			children = (
 				D21C6694A003407C2302C6F9 /* Pods.debug.xcconfig */,
 				19D3832CFB1FE7B9C08BB42A /* Pods.release.xcconfig */,
+				4ACC4C488B776C4BD1ACA413 /* Pods-HelloVideoGoogleCastSwift.debug.xcconfig */,
+				CAD4B1F9600DD0747EE99446 /* Pods-HelloVideoGoogleCastSwift.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -223,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAD0BBF11B59A3B1003F158E /* Build configuration list for PBXNativeTarget "HelloVideoGoogleCastSwift" */;
 			buildPhases = (
+				2E0322B7611A9B1D561CF062 /* [CP] Check Pods Manifest.lock */,
 				EAD0BBE71B59A3B1003F158E /* Sources */,
 				EAD0BBE81B59A3B1003F158E /* Frameworks */,
 				EAD0BBF01B59A3B1003F158E /* Resources */,
+				F1E656A7D1F45A7C5C3F15D7 /* [CP] Embed Pods Frameworks */,
+				9EBD533B312671CBF15A78DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,6 +313,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E0322B7611A9B1D561CF062 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloVideoGoogleCastSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EBD533B312671CBF15A78DE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HelloVideoGoogleCastSwift/Pods-HelloVideoGoogleCastSwift-resources.sh",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-2.10.4-Release/GoogleCast.framework/GoogleCastResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/google-cast-sdk/CastFrameworkAssets.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CastFrameworkAssets.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloVideoGoogleCastSwift/Pods-HelloVideoGoogleCastSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1E656A7D1F45A7C5C3F15D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloVideoGoogleCastSwift/Pods-HelloVideoGoogleCastSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC34F3CC1885E326007E3FFC /* Sources */ = {
@@ -444,6 +511,7 @@
 		};
 		EAD0BBF21B59A3B1003F158E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ACC4C488B776C4BD1ACA413 /* Pods-HelloVideoGoogleCastSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -467,6 +535,7 @@
 		};
 		EAD0BBF31B59A3B1003F158E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAD4B1F9600DD0747EE99446 /* Pods-HelloVideoGoogleCastSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
