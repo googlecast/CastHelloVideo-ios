@@ -1,5 +1,8 @@
 # CastHelloVideo-ios
 platform :ios, '6.0'
-pod 'google-cast-sdk'
-link_with 'HelloVideoGoogleCastObjectiveC', 'HelloVideoGoogleCastSwift'
 
+abstract_target 'CastHelloVideo-ios' do
+  pod 'google-cast-sdk'
+  target 'HelloVideoGoogleCastObjectiveC'
+  target 'HelloVideoGoogleCastSwift'
+end
