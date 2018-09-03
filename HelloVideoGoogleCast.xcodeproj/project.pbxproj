@@ -461,6 +461,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = HelloVideoGoogleCastSwift;
 				SWIFT_OBJC_BRIDGING_HEADER = "HelloVideoGoogleCastSwift/HelloVideoGoogleCast-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -484,6 +485,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = HelloVideoGoogleCastSwift;
 				SWIFT_OBJC_BRIDGING_HEADER = "HelloVideoGoogleCastSwift/HelloVideoGoogleCast-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
