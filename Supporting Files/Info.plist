@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.google.cast.sample.hellovideogooglecast.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -27,9 +27,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>HelloVideoStoryboard</string>
+	<string>Main</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>HelloVideoStoryboard</string>
+	<string>Main</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Using the microphone to discover nearby Chromecast devices.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
