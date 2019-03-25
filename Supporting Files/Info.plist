@@ -31,7 +31,7 @@
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main</string>
   <key>NSMicrophoneUsageDescription</key>
-  <string>Using the microphone to discover nearby Chromecast devices.</string>
+  <string>Using the microphone to discover nearby Google Cast devices.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
