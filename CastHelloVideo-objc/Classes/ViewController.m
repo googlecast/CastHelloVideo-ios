@@ -72,12 +72,9 @@
   GCKMediaMetadata *metadata = [[GCKMediaMetadata alloc] init];
   [metadata setString:@"Big Buck Bunny (2008)" forKey:kGCKMetadataKeyTitle];
   [metadata setString:@"Big Buck Bunny tells the story of a giant rabbit with a "
-                      @"heart bigger than "
-                       "himself. When one sunny day three rodents rudely harass him, "
-                       "something "
-                       "snaps... and the rabbit ain't no bunny anymore! In the "
-                       "typical cartoon "
-                       "tradition he prepares the nasty rodents a comical revenge."
+                       "heart bigger than himself. When one sunny day three rodents rudely harass him, "
+                       "something snaps... and the rabbit ain't no bunny anymore! In the "
+                       "typical cartoon tradition he prepares the nasty rodents a comical revenge."
                forKey:kGCKMetadataKeySubtitle];
   [metadata addImage:[[GCKImage alloc]
                          initWithURL:
@@ -89,21 +86,19 @@
 
   // Define information about the media item.
   GCKMediaInformationBuilder *mediaInfoBuilder = [[GCKMediaInformationBuilder alloc]
-      initWithContentURL:[NSURL URLWithString:@"https://"
-                                              @"commondatastorage.googleapis."
-                                              @"com/gtv-videos-bucket/sample/"
-                                              @"BigBuckBunny.mp4"]];
-  // TODO: Remove contentID when sample receiver supports using contentURL
-  mediaInfoBuilder.contentID = @"https://commondatastorage.googleapis.com/"
-                               @"gtv-videos-bucket/sample/BigBuckBunny.mp4";
+                                                  initWithContentURL:[NSURL URLWithString:@"https://commondatastorage.googleapis.com/"
+                                                  "gtv-videos-bucket/sample/BigBuckBunny.mp4"]];
   mediaInfoBuilder.streamType = GCKMediaStreamTypeNone;
   mediaInfoBuilder.contentType = @"video/mp4";
   mediaInfoBuilder.metadata = metadata;
   self.mediaInformation = [mediaInfoBuilder build];
 
+  GCKMediaLoadRequestDataBuilder *mediaLoadRequestDataBuilder = [[GCKMediaLoadRequestDataBuilder alloc] init];
+  mediaLoadRequestDataBuilder.mediaInformation = self.mediaInformation;
+
   // Send a load request to the remote media client.
-  GCKRequest *request =
-      [self.sessionManager.currentSession.remoteMediaClient loadMedia:self.mediaInformation];
+  GCKRequest *request = [self.sessionManager.currentSession.remoteMediaClient
+                                  loadMediaWithLoadRequestData:[mediaLoadRequestDataBuilder build]];
   if (request != nil) {
     request.delegate = self;
   }

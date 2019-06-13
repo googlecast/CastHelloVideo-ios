@@ -71,23 +71,17 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
                                width: 480,
                                height: 360))
 
-    // Define information about the media item.
-    let url = URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-    guard let mediaURL = url else {
-      print("invalid mediaURL")
-      return
-    }
-
-    let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: mediaURL)
-    // TODO: Remove contentID when sample receiver supports using contentURL
-    mediaInfoBuilder.contentID = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!)
     mediaInfoBuilder.streamType = GCKMediaStreamType.none
     mediaInfoBuilder.contentType = "video/mp4"
     mediaInfoBuilder.metadata = metadata
     mediaInformation = mediaInfoBuilder.build()
 
+    let mediaLoadRequestDataBuilder = GCKMediaLoadRequestDataBuilder()
+    mediaLoadRequestDataBuilder.mediaInformation = mediaInformation
+
     // Send a load request to the remote media client.
-    if let request = sessionManager.currentSession?.remoteMediaClient?.loadMedia(mediaInformation!) {
+    if let request = sessionManager.currentSession?.remoteMediaClient?.loadMedia(with: mediaLoadRequestDataBuilder.build()) {
       request.delegate = self
     }
   }
