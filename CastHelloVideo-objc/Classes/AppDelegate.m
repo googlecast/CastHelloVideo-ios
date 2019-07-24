@@ -18,7 +18,7 @@
 // You can add your own app id here that you get by registering with the Google
 // Cast SDK Developer Console https://cast.google.com/publish or use
 // kGCKDefaultMediaReceiverApplicationID
-#define kReceiverAppID @"C0868879"
+#define kReceiverAppID kGCKDefaultMediaReceiverApplicationID
 #define kDebugLoggingEnabled YES
 
 @interface AppDelegate () <GCKLoggerDelegate> {
