@@ -19,10 +19,13 @@ import UIKit
 class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMediaClientListener, GCKRequestDelegate {
   @IBOutlet var castVideoButton: UIButton!
   @IBOutlet var castInstructionLabel: UILabel!
-
+  @IBOutlet var credsToggleButton: UIButton!
+  @IBOutlet var credsLabel: UILabel!
+    
   private var castButton: GCKUICastButton!
   private var mediaInformation: GCKMediaInformation?
   private var sessionManager: GCKSessionManager!
+  private let NULL_CREDENTIALS = "N/A"
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,7 +41,11 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
 
     // Used to overwrite the theme in AppDelegate.
     castButton.tintColor = .darkGray
-
+    
+    // Initial default value
+    self.credsLabel.text = NULL_CREDENTIALS
+    setLaunchCreds()
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: castButton)
 
     NotificationCenter.default.addObserver(self,
@@ -71,7 +78,8 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
                                width: 480,
                                height: 360))
 
-    let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!)
+    let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: URL(string:
+        "https://storage.googleapis.com/tse-summit.appspot.com/hls/bbb/bbb.m3u8")!)
     mediaInfoBuilder.streamType = GCKMediaStreamType.none
     mediaInfoBuilder.contentType = "video/mp4"
     mediaInfoBuilder.metadata = metadata
@@ -79,6 +87,7 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
 
     let mediaLoadRequestDataBuilder = GCKMediaLoadRequestDataBuilder()
     mediaLoadRequestDataBuilder.mediaInformation = mediaInformation
+    mediaLoadRequestDataBuilder.credentials = credsLabel.text
 
     // Send a load request to the remote media client.
     if let request = sessionManager.currentSession?.remoteMediaClient?.loadMedia(with: mediaLoadRequestDataBuilder.build()) {
@@ -86,6 +95,17 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
     }
   }
 
+  // Toggle label text and set those credentials for next session
+  @IBAction func setCredentials(_ sender: Any) {
+    let credentials = credsLabel.text
+    if (credentials == NULL_CREDENTIALS) {
+        credsLabel.text = "{\"userId\":\"id123\"}"
+    } else {
+        credsLabel.text = NULL_CREDENTIALS
+    }
+    setLaunchCreds()
+  }
+    
   @IBAction func loadVideo(sender _: AnyObject) {
     print("Load Video")
 
@@ -186,5 +206,10 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
     alertController.addAction(action)
 
     present(alertController, animated: true, completion: nil)
+  }
+  
+  func setLaunchCreds() {
+    let creds = credsLabel.text
+    GCKCastContext.sharedInstance().setLaunch(GCKCredentialsData(credentials: (creds == NULL_CREDENTIALS) ? nil : creds))
   }
 }

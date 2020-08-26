@@ -19,7 +19,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
   // You can add your own app id here that you get by registering with the Google Cast SDK
   // Developer Console https://cast.google.com/publish or use kGCKDefaultMediaReceiverApplicationID
-  let kReceiverAppID = kGCKDefaultMediaReceiverApplicationID
+  let kReceiverAppID = "C0868879"
   let kDebugLoggingEnabled = true
 
   var window: UIWindow?
@@ -29,8 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
     let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
     let options = GCKCastOptions(discoveryCriteria: criteria)
     options.physicalVolumeButtonsWillControlDeviceVolume = true
-    GCKCastContext.setSharedInstanceWith(options)
+    
+    // Following code enables Cast Connect
+     let launchOptions = GCKLaunchOptions()
+     launchOptions.androidReceiverCompatible = true
+     options.launchOptions = launchOptions
 
+    GCKCastContext.setSharedInstanceWith(options)
+    GCKCastContext.sharedInstance().setLaunch(GCKCredentialsData(credentials: "{\"userId\": \"123\"}"))
     // Configure widget styling.
     // Theme using UIAppearance.
     UINavigationBar.appearance().barTintColor = .lightGray

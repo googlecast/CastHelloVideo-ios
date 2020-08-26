@@ -16,10 +16,9 @@
 #import <GoogleCast/GoogleCast.h>
 
 // You can add your own app id here that you get by registering with the Google
-// Cast SDK Developer Console https://cast.google.com/publish or use
-// kGCKDefaultMediaReceiverApplicationID
-#define kReceiverAppID kGCKDefaultMediaReceiverApplicationID
-#define kDebugLoggingEnabled YES
+// Cast SDK Developer Console https://cast.google.com/publish
+static NSString *const kReceiverAppID = @"C0868879";
+static Boolean const kDebugLoggingEnabled = YES;
 
 @interface AppDelegate () <GCKLoggerDelegate> {
 }
@@ -35,6 +34,12 @@
       [[GCKDiscoveryCriteria alloc] initWithApplicationID:kReceiverAppID];
   GCKCastOptions *options = [[GCKCastOptions alloc] initWithDiscoveryCriteria:criteria];
   options.physicalVolumeButtonsWillControlDeviceVolume = YES;
+  
+  // Following code enables Cast Connect
+  GCKLaunchOptions *gckLaunchOptions = [[GCKLaunchOptions alloc] init];
+  gckLaunchOptions.androidReceiverCompatible = YES;
+  options.launchOptions = gckLaunchOptions;
+  
   [GCKCastContext setSharedInstanceWithOptions:options];
 
   // Configure widget styling.

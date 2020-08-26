@@ -15,6 +15,8 @@
 #import "ViewController.h"
 #import <GoogleCast/GoogleCast.h>
 
+static NSString *const NULL_CREDENTIALS = @"N/A";
+
 @interface ViewController () <GCKSessionManagerListener,
                               GCKRemoteMediaClientListener,
                               GCKRequestDelegate> {
@@ -22,6 +24,8 @@
 
 @property(nonatomic, weak) IBOutlet UIButton *castVideoButton;
 @property(nonatomic, weak) IBOutlet UILabel *castInstructionLabel;
+@property(nonatomic, weak) IBOutlet UIButton *credsToggleButton;
+@property(nonatomic, weak) IBOutlet UILabel *credsLabel;
 
 @property(nonatomic, strong) GCKUICastButton *castButton;
 @property(nonatomic, strong) GCKMediaInformation *mediaInformation;
@@ -53,6 +57,25 @@
                                            selector:@selector(castDeviceDidChange:)
                                                name:kGCKCastStateDidChangeNotification
                                              object:[GCKCastContext sharedInstance]];
+  _credsLabel.text = NULL_CREDENTIALS;
+  [self setLaunchCreds];
+}
+
+- (IBAction)setCredentials:(id)sender {
+  NSString *creds = _credsLabel.text;
+  if(creds == NULL_CREDENTIALS)
+  {
+    _credsLabel.text = @"{\"userId\":\"id123\"}";
+  } else {
+    _credsLabel.text = NULL_CREDENTIALS;
+  }
+  [self setLaunchCreds];
+}
+
+- (void) setLaunchCreds {
+  NSString *creds = _credsLabel.text;
+  GCKCredentialsData *credsData = [[GCKCredentialsData alloc] initWithCredentials:creds];
+  [[GCKCastContext sharedInstance] setLaunchCredentialsData:credsData];
 }
 
 - (void)castDeviceDidChange:(NSNotification *)notification {

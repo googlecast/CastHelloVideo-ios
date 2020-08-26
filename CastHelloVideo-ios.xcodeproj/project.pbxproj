@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		331A1D123495687A9BDB50F4 /* Pods_CastHelloVideo_objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401AE826BC816237290D956A /* Pods_CastHelloVideo_objc.framework */; };
 		399DC0BD95302C25D77FBE32 /* Pods_CastHelloVideo_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8B3194CD2E2DFF5C328CB3 /* Pods_CastHelloVideo_swift.framework */; };
+		98D7681E2559FD6C00357555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E7C77E219607060029EC49 /* Main.storyboard */; };
 		CC34F3D41885E326007E3FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D31885E326007E3FFC /* Foundation.framework */; };
 		CC34F3D61885E326007E3FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D51885E326007E3FFC /* CoreGraphics.framework */; };
 		CC34F3D81885E326007E3FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC34F3D71885E326007E3FFC /* UIKit.framework */; };
@@ -17,7 +18,6 @@
 		D5E7C77A219606EA0029EC49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E7C776219606EA0029EC49 /* ViewController.swift */; };
 		D5E7C77B219606EA0029EC49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E7C777219606EA0029EC49 /* AppDelegate.swift */; };
 		D5E7C787219607060029EC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E7C77E219607060029EC49 /* Main.storyboard */; };
-		D5E7C788219607060029EC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E7C77E219607060029EC49 /* Main.storyboard */; };
 		D5E7C789219607060029EC49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E7C77F219607060029EC49 /* LaunchScreen.storyboard */; };
 		D5E7C78A219607060029EC49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E7C77F219607060029EC49 /* LaunchScreen.storyboard */; };
 		D5E7C797219607060029EC49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E7C786219607060029EC49 /* Images.xcassets */; };
@@ -285,6 +285,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CC34F3C71885E326007E3FFC;
@@ -313,9 +314,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98D7681E2559FD6C00357555 /* Main.storyboard in Resources */,
 				D5E7C798219607060029EC49 /* Images.xcassets in Resources */,
 				D5E7C78A219607060029EC49 /* LaunchScreen.storyboard in Resources */,
-				D5E7C788219607060029EC49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,8 +348,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CastHelloVideo-swift/Pods-CastHelloVideo-swift-resources.sh",
-				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.0_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
-				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.0_static/GoogleCast.framework/GoogleCastUIResources.bundle",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.1_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.1_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -405,8 +406,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CastHelloVideo-objc/Pods-CastHelloVideo-objc-resources.sh",
-				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.0_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
-				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.0_static/GoogleCast.framework/GoogleCastUIResources.bundle",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.1_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.5.1_static/GoogleCast.framework/GoogleCastUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
