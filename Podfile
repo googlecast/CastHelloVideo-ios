@@ -1,9 +1,9 @@
 use_frameworks!
 
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 def target_pods
-  pod 'google-cast-sdk', '< 5.0', '>=4.5.2'
+  pod 'google-cast-sdk', '< 5.0', '>=4.7.0'
 end
 
 target 'CastHelloVideo-objc' do

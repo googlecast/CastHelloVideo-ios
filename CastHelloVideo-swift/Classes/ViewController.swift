@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC. All Rights Reserved.
+// Copyright 2022 Google LLC. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -202,7 +202,7 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
     let alertController = UIAlertController(title: "Error",
                                             message: error.localizedDescription,
                                             preferredStyle: UIAlertController.Style.alert)
-    let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+    let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
     alertController.addAction(action)
 
     present(alertController, animated: true, completion: nil)

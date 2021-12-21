@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC. All Rights Reserved.
+// Copyright 2022 Google LLC. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,8 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
     let navigationController = appStoryboard.instantiateViewController(withIdentifier: "MainNavigation")
     let castContainerVC = GCKCastContext.sharedInstance().createCastContainerController(for: navigationController)
     castContainerVC.miniMediaControlsItemEnabled = true
-    // Color the background to match the embedded content
-    castContainerVC.view.backgroundColor = .white
 
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = castContainerVC
