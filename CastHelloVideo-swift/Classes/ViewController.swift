@@ -74,12 +74,12 @@ class ViewController: UIViewController, GCKSessionManagerListener, GCKRemoteMedi
       "snaps... and the rabbit ain't no bunny anymore! In the typical cartoon " +
       "tradition he prepares the nasty rodents a comical revenge.",
                        forKey: kGCKMetadataKeySubtitle)
-    metadata.addImage(GCKImage(url: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg")!,
+    metadata.addImage(GCKImage(url: URL(string: "https://storage.googleapis.com/cpe-sample-media/transfer/big_buck_bunny/images/gtv-image.jpg")!,
                                width: 480,
                                height: 360))
 
     let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: URL(string:
-        "https://storage.googleapis.com/tse-summit.appspot.com/hls/bbb/bbb.m3u8")!)
+        "https://storage.googleapis.com/cpe-sample-media/transfer/big_buck_bunny/big_buck_bunny_ts_master.m3u8")!)
     mediaInfoBuilder.streamType = GCKMediaStreamType.none
     mediaInfoBuilder.contentType = "video/mp4"
     mediaInfoBuilder.metadata = metadata

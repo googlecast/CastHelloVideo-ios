@@ -103,14 +103,14 @@ static NSString *const NULL_CREDENTIALS = @"N/A";
                          initWithURL:
                              [[NSURL alloc]
                                  initWithString:@"https://commondatastorage.googleapis.com/"
-                                                 "gtv-videos-bucket/sample/images/BigBuckBunny.jpg"]
+                                                 "cpe-sample-media/transfer/big_buck_bunny/images/gtv-image.jpg"]
                                width:480
                               height:360]];
 
   // Define information about the media item.
   GCKMediaInformationBuilder *mediaInfoBuilder = [[GCKMediaInformationBuilder alloc]
                                                   initWithContentURL:[NSURL URLWithString:@"https://commondatastorage.googleapis.com/"
-                                                  "gtv-videos-bucket/sample/BigBuckBunny.mp4"]];
+                                                  "cpe-sample-media/transfer/big_buck_bunny/prog/big_buck_bunny_prog.mp4"]];
   mediaInfoBuilder.streamType = GCKMediaStreamTypeNone;
   mediaInfoBuilder.contentType = @"video/mp4";
   mediaInfoBuilder.metadata = metadata;
